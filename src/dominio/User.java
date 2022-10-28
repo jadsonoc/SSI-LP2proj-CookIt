@@ -69,12 +69,13 @@ public class User {
     private void setLoginUser(Login login) {
         if (login != null) {
             this.loginUser = login;
-        }
-        else {
+        } else {
             throw new RuntimeException("Erro de Cadastro de Usuário: Necessário informar os dados de Login.");
         }
     }
-
     
+
+
+
     
 }

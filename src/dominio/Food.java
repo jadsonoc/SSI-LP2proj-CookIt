@@ -55,5 +55,13 @@ public class Food {
     public void setFree(int free) {
         this.frees.add(new Free(free));
     }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
     
 }
