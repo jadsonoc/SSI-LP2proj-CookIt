@@ -24,12 +24,25 @@ public class SuggestRecipeView {
         System.out.println("Escolha os ingredientes: ");
         String answer = "s";
         while (answer.equals("s") | (answer.equals("S"))) {
-            IngredientsView ingredientsScreen = new IngredientsView(this.ingredients);
-            Food ing = ingredientsScreen.chooseIngredientMenu();
+            IngredientsView ingredientsView = new IngredientsView(this.ingredients);
+            Food ing = ingredientsView.chooseIngredientMenu();
             chosenIngredients.add(ing);
             answer = InputKeyboardStream.readString("Deseja adicionar outro ingrediente? (s/n): ");
         }
-        return chosenIngredients; 
+        return chosenIngredients;
+    }
+    
+    public List<Recipe> chooseRecipesMenu() {
+        List<Recipe> chosenRecipes = new ArrayList<Recipe>();
+        System.out.println("Escolha a receita que deseja visualizar: ");
+        String answer = "s";
+        while (answer.equals("s") | (answer.equals("S"))) {
+            RecipesView recipesView = new RecipesView(this.recipes);
+            Recipe rec = recipesView.chooseRecipeMenu();
+            chosenRecipes.add(rec);
+            answer = InputKeyboardStream.readString("Deseja adicionar outra receita? (s/n): ");
+        }
+        return chosenRecipes; 
     }
     
 }

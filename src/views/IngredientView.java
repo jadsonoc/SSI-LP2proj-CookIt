@@ -11,6 +11,10 @@ public class IngredientView {
     }
 
     public void printIngredient() {
-        System.out.println(this.ingredient.toString());
+        if ( this.ingredient.isFree() ) {
+            System.out.printf("%5d %-20s");
+        } else {
+            System.out.printf("%5d %-20s\n", this.ingredient.getId(), this.ingredient.getName());
+        }
     }
 }

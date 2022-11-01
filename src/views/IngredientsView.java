@@ -1,7 +1,9 @@
 package views;
 
+import java.util.List;
 import java.util.Map;
 import models.Food;
+import models.Ingredient;
 import util.InputKeyboardStream;
 import util.Sequences;
 
@@ -13,8 +15,14 @@ public class IngredientsView {
     
     private Map<Integer, Food> ingredients;
 
+    private List<Ingredient> ingredientsRecipe;
+
     public IngredientsView(Map<Integer, Food> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public IngredientsView(List<Ingredient> ingredients) {
+        this.ingredientsRecipe = ingredients;
     }
 
     public IngredientsScreenOptions mainMenu() { 
@@ -28,10 +36,22 @@ public class IngredientsView {
     }
 
     public void printIngredients() {
-        System.out.println("******************* Ingredients *********************");
-        for (Food ing : ingredients.values()) {
-            IngredientView ingredientScreen = new IngredientView(ing);
-            ingredientScreen.printIngredient();
+        if (this.ingredients != null) {
+            System.out.println("******************* Ingredientes *********************");
+            for (Food ing : ingredients.values()) {
+                IngredientView ingredientScreen = new IngredientView(ing);
+                ingredientScreen.printIngredient();
+            }
+        } else if (this.ingredientsRecipe != null) {
+            System.out.println("------- Ingredientes necessários: -------- ");
+            for (Ingredient ing : this.ingredientsRecipe) {
+                if (ing.getIngredient().getUnit().getAbbreviation() == "q.b.")
+                    System.out.printf("%s %s\n", ing.getIngredient().getName(), ing.getIngredient().getUnit().getAbbreviation());
+                else
+                    System.out.printf("%d%s %s\n", ing.getQuantity(), ing.getIngredient().getUnit().getAbbreviation(), ing.getIngredient().getName() );
+            }
+        } else {
+            System.out.println("Nenhum ingrediente cadastrado!");
         }
     }
     

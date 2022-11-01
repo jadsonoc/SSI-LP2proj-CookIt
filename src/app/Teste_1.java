@@ -1,6 +1,6 @@
 package app;
 
-import dados.BD;
+import data.BD;
 
 public class Teste_1 {
     

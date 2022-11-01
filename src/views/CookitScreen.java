@@ -1,4 +1,4 @@
-package screen;
+package views;
 
 public class CookitScreen {
     

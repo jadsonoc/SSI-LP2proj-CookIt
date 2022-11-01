@@ -73,6 +73,10 @@ public class Food {
         return tempRec;
     }
 
+    public boolean isFree() {
+        return ( this.frees != null );
+    }
+
     @Override
     public String toString() {
         return "Food [id=" + id + ", name=" + name + ", unit=" + unit + ", frees=" + frees + ", ingredients="

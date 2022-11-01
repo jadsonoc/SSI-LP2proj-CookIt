@@ -1,11 +1,15 @@
 package controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
 
 import data.BD;
 import models.Food;
 import models.Recipe;
 import views.IngredientsView;
+import views.RecipeView;
+import views.RecipesView;
 import views.SuggestRecipeView;
 
 public class IngredientsController {
@@ -43,10 +47,30 @@ public class IngredientsController {
         
         List<Food> ings = suggestRecipeView.chooseIngredientsMenu();
 
+        // BD.receitas.entrySet()
+        //         .stream()
+        //         .filter(map -> map.getValue().isElegible(ings))
+        //         .forEach(map -> new RecipeView(map.getValue()).printRecipe());
+        // BD.receitas.entrySet()
+        // .stream()
+        // .filter(map -> map.getValue().isElegible(ings))
+        // .forEach(map -> new RecipesView(map).chooseRecipeMenu());
+
+
         for (Recipe rec : BD.receitas.values()) {
-            if (rec.isElegible(ings))
-                System.out.println(rec);
+            RecipeView recView;
+            if (rec.isElegible(ings)) {
+                recView = new RecipeView(rec);
+                recView.printRecipe();
+            }
         }
+
+
+
+
+        //List<Recipe> recs = suggestRecipeView.chooseRecipesMenu();
+
+       
     }
 
 }

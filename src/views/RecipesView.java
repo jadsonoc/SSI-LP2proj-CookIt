@@ -33,4 +33,15 @@ public class RecipesView {
         }
     }
 
+    public Recipe chooseRecipeMenu() {
+        Recipe rec = null;
+        this.printRecipes();
+        int i = InputKeyboardStream.readInt("Informe o número da receita que deseja visualizar: ");
+        // if ((i >= Sequences.INIT_FOOD) && (i <= (Sequences.INIT_FOOD + this.ingredients.size()))) {
+        //     ing = this.ingredients.get(i);
+        // }
+        rec = this.recipes.get(i);
+        return rec;
+    }
+
 }
