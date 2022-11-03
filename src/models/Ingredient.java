@@ -6,9 +6,9 @@ public class Ingredient {
 
     private Food ingredient;
 
-    private int quantity;
+    private float quantity;
 
-    public Ingredient(Recipe recipe, Food ingredient, int quantity) {
+    public Ingredient(Recipe recipe, Food ingredient, float quantity) {
         this.recipe = recipe;
         this.ingredient = ingredient;
         this.quantity = quantity;
@@ -30,7 +30,7 @@ public class Ingredient {
         this.ingredient = ingredient;
     }
 
-    public int getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 

@@ -15,18 +15,27 @@ public class MainController {
         do {
             op = mainView.mainMenu();
             switch (op) {
-                case RECEITAS:
+                case PROFILE:
+                    this.profileController();
+                    break;
+                case RECIPES:
                     this.recipesController();
                     break;
-                case INGREDIENTES:
+                case INGREDIENTS:
                     this.ingredientsController();
                     break;
                 case SUGGEST:
                     this.suggestRecipeController();
+                    break;
                 default:
                     break;
             }
         } while (op != MainView.OptionsMainScreen.VAZIO);
+    }
+
+    private void profileController() {
+        ProfileController profileCtrl = new ProfileController();
+        profileCtrl.mainMenu();
     }
 
     private void recipesController() {

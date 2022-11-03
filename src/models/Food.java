@@ -73,8 +73,8 @@ public class Food {
         return tempRec;
     }
 
-    public boolean isFree() {
-        return ( this.frees != null );
+    public boolean isFree(List<Free> frees) {
+        return (this.frees.equals(frees));
     }
 
     @Override

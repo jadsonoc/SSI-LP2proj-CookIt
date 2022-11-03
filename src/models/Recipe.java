@@ -2,7 +2,10 @@ package models;
 
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
+import data.DB;
 import util.Sequences;
 
 public class Recipe {
@@ -35,6 +38,14 @@ public class Recipe {
         this.difficulty = difficulty;
         this.categories = categories;
         this.kitchenwares = kitchenwares;
+    }
+
+    public static Map<Integer, Recipe> getRecipesFree( List<Free> frees ) {
+        Map<Integer, Recipe> freeRecipes = DB.receitas.entrySet()
+        .stream()
+        .filter(map -> map.getValue().isFree(frees))
+                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+        return freeRecipes;
     }
 
     public Integer getId() {
@@ -114,8 +125,13 @@ public class Recipe {
                 }
             }
         }
-        return (contador > ((this.ingredients.size()/2)-1));
+        return (contador > ((this.ingredients.size() / 2) - 1));
     }
+    
+    public boolean isFree(List<Free> frees) {
+        return this.ingredients.stream().allMatch(i -> i.getIngredient().isFree(frees));
+    }
+
 
     @Override
     public String toString() {

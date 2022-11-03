@@ -5,7 +5,7 @@ import util.InputKeyboardStream;
 public class MainView {
 
     public static enum OptionsMainScreen {
-        VAZIO, PERFIL, RECEITAS, INGREDIENTES, SUGGEST
+        VAZIO, PROFILE, RECIPES, INGREDIENTS, SUGGEST
     };
 
     public OptionsMainScreen mainMenu() {
@@ -14,8 +14,8 @@ public class MainView {
         System.out.println("1 - Perfil");
         System.out.println("2 - Receitas");
         System.out.println("3 - Ingredientes");
-        System.out.println("4 - Receber sugestão");
-        int i = InputKeyboardStream.readInt("Escolha uma opção: ");
+        System.out.println("4 - Receber sugestão de receitas");
+        int i = InputKeyboardStream.readInt("Escolha uma opção acima: ");
         op = OptionsMainScreen.values()[i];
         return op;
     }

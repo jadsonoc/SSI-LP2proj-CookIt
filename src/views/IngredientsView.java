@@ -5,7 +5,6 @@ import java.util.Map;
 import models.Food;
 import models.Ingredient;
 import util.InputKeyboardStream;
-import util.Sequences;
 
 public class IngredientsView {
     
@@ -56,12 +55,13 @@ public class IngredientsView {
     
     public Food chooseIngredientMenu() {
         Food ing = null;
+        int i = 0;
         this.printIngredients();
-        int i = InputKeyboardStream.readInt("Informe o número do Ingrediente: ");
-        if ((i >= Sequences.INIT_FOOD) && (i <= (Sequences.INIT_FOOD + this.ingredients.size()))) {
-            System.out.println("Ingrediente escolhido: " + this.ingredients.get(i).getName());
-            ing = this.ingredients.get(i);
-        }
+        do {
+            i = InputKeyboardStream.readInt("Informe o número do Ingrediente: ");
+        } while (!this.ingredients.containsKey(i));
+        System.out.println("Ingrediente escolhido: " + this.ingredients.get(i).getName());
+        ing = this.ingredients.get(i);
         return ing;
     }
 

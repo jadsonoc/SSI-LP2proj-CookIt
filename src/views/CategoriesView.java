@@ -12,7 +12,7 @@ public class CategoriesView {
     }
 
     public void printCategories() {
-        System.out.println("-------- Esta receita pode ser feita para: ----------");
+        System.out.println("-------- Esta receita pode ser servida como: ----------");
         for (Category cat : this.categories)
             System.out.println(cat.getName());
     }

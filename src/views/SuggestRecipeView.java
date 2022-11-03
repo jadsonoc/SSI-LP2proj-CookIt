@@ -26,7 +26,7 @@ public class SuggestRecipeView {
     public SuggestRecipesScreenOptions mainMenu() {
         SuggestRecipesScreenOptions op = SuggestRecipesScreenOptions.VAZIO;
         System.out.println("0 - Voltar");
-        System.out.println("1 - Receber sugestão de receitas");
+        System.out.println("1 - Informar ingredientes à disposição");
         int i = InputKeyboardStream.readInt("Selecione uma opção acima: ");
         op = SuggestRecipesScreenOptions.values()[i];
         return op;

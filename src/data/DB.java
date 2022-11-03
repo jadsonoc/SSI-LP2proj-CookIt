@@ -18,11 +18,9 @@ import models.User;
 
 public class DB {
 
-    public static User usuario = new User("Jadson Costa", "jadsonoc@gmail.com", "jadsonoc", "123456");
+    public static User usuario = new User("Jadson Costa", "jadsonoc@gmail.com", "jadsonoc", "123456", 5, false, false);
     public static List<Free> semLacGluten = new ArrayList<Free>(
             Arrays.asList(new Free(Free.GLUTEN), new Free(Free.LACTOSE)));
-
-
     public static Map<Integer, Unit> unidades = new HashMap<Integer, Unit>();
     public static Map<Integer, Category> categorias = new HashMap<Integer, Category>();
     public static Map<Integer, Food> alimentos = new HashMap<Integer, Food>();
@@ -84,29 +82,29 @@ public class DB {
         alimentos.put(foo.getId(), foo);
         foo = new Food("Tomate", unidades.get(501));
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Orégano", unidades.get(508));
+        foo = new Food("Orégano", unidades.get(508), semLacGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Couve-flor", unidades.get(504));
+        foo = new Food("Couve-flor", unidades.get(504), semLacGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Azeite", unidades.get(503));
+        foo = new Food("Azeite", unidades.get(503), semLacGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Cebola", unidades.get(501));  //1008
+        foo = new Food("Cebola", unidades.get(501), semLacGluten);  //1008
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Tomate cereja", unidades.get(507));
+        foo = new Food("Tomate cereja", unidades.get(507), semLacGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Pimenta do reino", unidades.get(508));
+        foo = new Food("Pimenta do reino", unidades.get(508), semLacGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Sal", unidades.get(508));
+        foo = new Food("Sal", unidades.get(508), semLacGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Tempero Verde", unidades.get(505));
+        foo = new Food("Tempero Verde", unidades.get(505), semLacGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Ovo", unidades.get(504));
+        foo = new Food("Ovo", unidades.get(504), semLacGluten); //1013
         alimentos.put(foo.getId(), foo);
         foo = new Food("Leite", unidades.get(503));
         alimentos.put(foo.getId(), foo);
         foo = new Food("Pão de forma", unidades.get(509));
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Tapioca", unidades.get(507));
+        foo = new Food("Tapioca", unidades.get(507), semLacGluten);
         alimentos.put(foo.getId(), foo);
         foo = new Food("Biscoito de chocolate", unidades.get(501)); //1017
         alimentos.put(foo.getId(), foo);
@@ -119,9 +117,9 @@ public class DB {
     public static void criaUtensilios() {
         Kitchenware kit;
         List<Kitchenware> rep = new ArrayList<Kitchenware>();
-        kit = new Kitchenware("Forma de bolo", null); //801
+        kit = new Kitchenware("Forma de bolo", null); //800
         utensilios.put(kit.getId(), kit);
-        kit = new Kitchenware("Frigideira", null);
+        kit = new Kitchenware("Frigideira antiaderente", null);
         utensilios.put(kit.getId(), kit);
         kit = new Kitchenware("Amassador de batatas", null);
         utensilios.put(kit.getId(), kit);
@@ -130,15 +128,15 @@ public class DB {
         utensilios.put(kit.getId(), kit);
         rep.add(kit);
         kit = new Kitchenware("Espremedor de Batatas", rep);
-        rep.clear();
         utensilios.put(kit.getId(), kit);
+        rep.clear();
         kit = new Kitchenware("Liquidificador", null);
         utensilios.put(kit.getId(), kit);
         rep.add(kit);
         kit = new Kitchenware("Multiprocessador", rep);
         utensilios.put(kit.getId(), kit);
         rep.clear();
-        kit = new Kitchenware("Forma de fundo removível", null); //808
+        kit = new Kitchenware("Forma de fundo removível", null); //807
         utensilios.put(kit.getId(), kit);
         kit = new Kitchenware("Batedeira", null);
         utensilios.put(kit.getId(), kit);
@@ -184,14 +182,76 @@ public class DB {
         tempCat = new ArrayList<Category>(
                 Arrays.asList(categorias.get(605)));
         tempKit = new ArrayList<Kitchenware>(
-                Arrays.asList(utensilios.get(807), utensilios.get(808), utensilios.get(809)));
-        tempPrep = "1. Comece triturando o biscoito até virar uma farofinha;2. Misture a manteiga e forre uma forma de fundo removível de, aproximadamente, 18 cm com essa mistura;3.Leve ao forno em temperatura média por 10 min;4.Na batedeira, misture bem o cream cheese, a Nutella e os ovos até formar um creme uniforme;5.Despeje o creme por cima da camada de biscoito e leve ao forno em temperatura média por 30 minutos ou até que fique bem firme;6.Espere esfriar um pouco, desenforme e deixe na geladeira por, no mínimo, 1h.";
+                Arrays.asList(utensilios.get(806), utensilios.get(807), utensilios.get(808)));
+        tempPrep = "1. Comece triturando o biscoito até virar uma farofinha;2. Misture a manteiga e forre uma forma de fundo removível de, aproximadamente, 18 cm com essa mistura;3. Leve ao forno em temperatura média por 10 min;4. Na batedeira, misture bem o cream cheese, a Nutella e os ovos até formar um creme uniforme;5. Despeje o creme por cima da camada de biscoito e leve ao forno em temperatura média por 30 minutos ou até que fique bem firme;6. Espere esfriar um pouco, desenforme e deixe na geladeira por, no mínimo, 1h.";
         rec = new Recipe("Cheesecake de Nutella", tempPrep.replaceAll(";", System.lineSeparator()), LocalTime.of(1, 00), 8, 3, tempCat, tempKit);
         tempIng = new ArrayList<Ingredient>(
-                Arrays.asList(new Ingredient(rec, alimentos.get(1017), 100),
+                Arrays.asList(
+                        new Ingredient(rec, alimentos.get(1017), 100),
                         new Ingredient(rec, alimentos.get(1001), 2),
                         new Ingredient(rec, alimentos.get(1018), 300),
-                        new Ingredient(rec, alimentos.get(1019), 200)));
+                        new Ingredient(rec, alimentos.get(1019), 200)
+                ));
+        //Associa com Food
+        for (Ingredient ingredient : tempIng) {
+                ingredient.getIngredient().setIngredients(tempIng);
+        }
+        //Associa com Kitchenware
+        for (Kitchenware kitchenware : tempKit) {
+                kitchenware.setRecipes(Arrays.asList(rec));
+        }
+        //Associa com Category
+        for (Category category : tempCat) {
+                category.setRecipes(Arrays.asList(rec));
+        }
+        rec.setIngredients(tempIng);
+        receitas.put(rec.getId(), rec);
+
+        //Receita 3
+        tempCat = new ArrayList<Category>(
+                Arrays.asList(categorias.get(602), categorias.get(603)));
+        tempKit = new ArrayList<Kitchenware>(
+                Arrays.asList());
+        tempPrep = "1. Em uma panela, cozinhe a couve-flor em água fervente até que esteja macia, sem amolecer demais.;2. Escorra, passe na água gelada, para interromper o cozimento, e pique a couve-flor em pedaços bem pequenos, como se fossem grãos de arroz.;3. Em uma panela, aqueça o azeite e refogue a cebola e o alho.;4. Acrescente os tomates e deixe refogar até murchar.;5. Junte a pimenta-do-reino, o sal e a couve- flor e cozinhe em fogo baixo, com a panela tampada, por cerca de 5 minutos.;6. Coloque o cheiro-verde e misture bem.";
+        rec = new Recipe("Arroz de Couve-flor", tempPrep.replaceAll(";", System.lineSeparator()), LocalTime.of(0, 20), 4, 2, tempCat, tempKit);
+        tempIng = new ArrayList<Ingredient>(
+                Arrays.asList(
+                        new Ingredient(rec, alimentos.get(1006), 1),
+                        new Ingredient(rec, alimentos.get(1007), 0.5f),
+                        new Ingredient(rec, alimentos.get(1008), 1),
+                        new Ingredient(rec, alimentos.get(1009), 0.5f),
+                        new Ingredient(rec, alimentos.get(1010), 1),
+                        new Ingredient(rec, alimentos.get(1011), 1),
+                        new Ingredient(rec, alimentos.get(1012), 1)                        
+                ));
+        //Associa com Food
+        for (Ingredient ingredient : tempIng) {
+                ingredient.getIngredient().setIngredients(tempIng);
+        }
+        //Associa com Kitchenware
+        for (Kitchenware kitchenware : tempKit) {
+                kitchenware.setRecipes(Arrays.asList(rec));
+        }
+        //Associa com Category
+        for (Category category : tempCat) {
+                category.setRecipes(Arrays.asList(rec));
+        }
+        rec.setIngredients(tempIng);
+        receitas.put(rec.getId(), rec);
+
+        //Receita 4
+        tempCat = new ArrayList<Category>(
+                Arrays.asList(categorias.get(600), categorias.get(601)));
+        tempKit = new ArrayList<Kitchenware>(
+                Arrays.asList(utensilios.get(801)));
+        tempPrep = "1. Primeiramente, hidrate a tapioca de acordo com as instruções do fabricante;2. Em um recipiente, misture bem todos os ingredientes.;3. Em uma frigideira antiaderente, coloque uma porção da massa e deixe dourar levemente dos dois lados.;4. Repita a operação até terminar a massa.;5. Sirva com o recheio de sua preferência.";
+        rec = new Recipe("Crepioca Rápida", tempPrep.replaceAll(";", System.lineSeparator()), LocalTime.of(0, 10), 4, 2, tempCat, tempKit);
+        tempIng = new ArrayList<Ingredient>(
+                Arrays.asList(
+                        new Ingredient(rec, alimentos.get(1013), 4),
+                        new Ingredient(rec, alimentos.get(1016), 1),
+                        new Ingredient(rec, alimentos.get(1011), 4)
+                ));
         //Associa com Food
         for (Ingredient ingredient : tempIng) {
                 ingredient.getIngredient().setIngredients(tempIng);

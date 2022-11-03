@@ -18,6 +18,7 @@ public class KitchenwaresView {
             if (kit.hasRepleacements()) {
                 System.out.println(kit.getName());
                 System.out.println("Você pode substituir por: ");
+                System.out.println(kit.getRepleacements());
                 for (Kitchenware rep : kit.getRepleacements()) {
                     System.out.println(rep.getName());
                 }

@@ -33,11 +33,11 @@ public class Kitchenware {
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -45,7 +45,7 @@ public class Kitchenware {
     }
 
     public List<Recipe> getRecipes() {
-        return recipes;
+        return this.recipes;
     }
 
     public void setRecipes(List<Recipe> recipes) {
@@ -53,7 +53,7 @@ public class Kitchenware {
     }
 
     public List<Kitchenware> getRepleacements() {
-        return repleacements;
+        return this.repleacements;
     }
 
     public void setRepleacements(List<Kitchenware> repleacements) {
@@ -66,7 +66,7 @@ public class Kitchenware {
 
     @Override
     public String toString() {
-        return "Kitchenware [id=" + id + ", name=" + name + "]";
+        return "Kitchenware [id=" + id + ", name=" + name + ", repleacements=" + repleacements + "]";
     }
 
 }
