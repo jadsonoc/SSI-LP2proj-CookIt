@@ -1,18 +1,18 @@
 package app;
 
-import data.BD;
+import data.DB;
 
 public class Teste_1 {
     
     public static void main(String[] args) {
         
-        BD.criaUnidades();
-        BD.criaCategorias();
-        BD.criaAlimentos();
-        BD.criaReceitas();
-        BD.criaUtensilios();
+        DB.criaUnidades();
+        DB.criaCategorias();
+        DB.criaAlimentos();
+        DB.criaReceitas();
+        DB.criaUtensilios();
 
-        System.out.println(BD.receitas);
+        System.out.println(DB.receitas);
 
     }
 }

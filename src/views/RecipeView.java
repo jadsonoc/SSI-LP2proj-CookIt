@@ -19,6 +19,16 @@ public class RecipeView {
         ingredientsView.printIngredients();
         System.out.println("------- Modo de Preparo: -------- ");
         System.out.println(this.recipe.getPreparation());
+        KitchenwaresView kitchenwaresView = new KitchenwaresView(this.recipe.getKitchenwares());
+        kitchenwaresView.printKitchenwares();
+        CategoriesView categoriesView = new CategoriesView(this.recipe.getCategories());
+        categoriesView.printCategories();
+    }
+
+    public void printRecipeShort() {
+        System.out.printf("%d %s  --  ", this.recipe.getId(), this.recipe.getTitulo());
+        System.out.println(
+                "Tempo de Preparo: " + this.recipe.getTime() + " Rendimento: " + this.recipe.getServe() + " porções.");
     }
     
 }

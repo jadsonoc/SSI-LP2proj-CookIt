@@ -1,6 +1,6 @@
 package controller;
 
-import data.BD;
+import data.DB;
 import views.RecipesView;
 
 public class RecipesController {
@@ -8,7 +8,7 @@ public class RecipesController {
     private RecipesView recipesView;
 
     public RecipesController() {
-        recipesView = new RecipesView(BD.receitas);
+        recipesView = new RecipesView(DB.receitas);
     }
 
     public void mainMenu() {

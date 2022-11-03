@@ -9,10 +9,10 @@ public class Kitchenware {
     private Integer id;
     
     private String name;
-
-    private List<Recipe> recipes;
     
     private List<Kitchenware> repleacements;
+
+    private List<Recipe> recipes;
 
     public Kitchenware(String name) {
         this.id = Sequences.SEQ_KITCHENWARE++;
@@ -25,11 +25,11 @@ public class Kitchenware {
         this.repleacements = repleacements;
     }
 
-    public Kitchenware(String name, List<Recipe> recipes, List<Kitchenware> repleacements) {
+    public Kitchenware(String name, List<Kitchenware> repleacements, List<Recipe> recipes) {
         this.id = Sequences.SEQ_KITCHENWARE++;
         this.name = name;
-        this.recipes = recipes;
         this.repleacements = repleacements;
+        this.recipes = recipes;
     }
 
     public Integer getId() {
@@ -58,6 +58,10 @@ public class Kitchenware {
 
     public void setRepleacements(List<Kitchenware> repleacements) {
         this.repleacements = repleacements;
+    }
+
+    public boolean hasRepleacements() {
+        return (this.getRepleacements() != null);
     }
 
     @Override

@@ -21,6 +21,8 @@ public class MainController {
                 case INGREDIENTES:
                     this.ingredientsController();
                     break;
+                case SUGGEST:
+                    this.suggestRecipeController();
                 default:
                     break;
             }
@@ -35,5 +37,10 @@ public class MainController {
     private void ingredientsController() {
         IngredientsController ingredientCtrl = new IngredientsController();
         ingredientCtrl.mainMenu();
+    }
+
+    private void suggestRecipeController() {
+        SuggestRecipeController suggestRecipeCrtl = new SuggestRecipeController();
+        suggestRecipeCrtl.mainMenu();
     }
 }

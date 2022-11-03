@@ -26,16 +26,24 @@ public class RecipesView {
     }
 
     public void printRecipes() {
-        System.out.println("******************* Recipes *********************");
+        System.out.println("******************* Receitas *********************");
         for (Recipe rec : recipes.values()) {
-            RecipeView recipeScreen = new RecipeView(rec);
-            recipeScreen.printRecipe();
+            RecipeView recipeView = new RecipeView(rec);
+            recipeView.printRecipe();
+        }
+    }
+
+    public void printElegibleRecipes() {
+        System.out.println("*** Receitas que contém os ingredientes escolhidos: ***");
+        for (Recipe rec : recipes.values()) {
+            RecipeView recipeView = new RecipeView(rec);
+            recipeView.printRecipeShort();
         }
     }
 
     public Recipe chooseRecipeMenu() {
         Recipe rec = null;
-        this.printRecipes();
+        this.printElegibleRecipes();
         int i = InputKeyboardStream.readInt("Informe o número da receita que deseja visualizar: ");
         // if ((i >= Sequences.INIT_FOOD) && (i <= (Sequences.INIT_FOOD + this.ingredients.size()))) {
         //     ing = this.ingredients.get(i);

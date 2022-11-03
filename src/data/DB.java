@@ -16,7 +16,7 @@ import models.Recipe;
 import models.Unit;
 import models.User;
 
-public class BD {
+public class DB {
 
     public static User usuario = new User("Jadson Costa", "jadsonoc@gmail.com", "jadsonoc", "123456");
     public static List<Free> semLacGluten = new ArrayList<Free>(
@@ -119,28 +119,28 @@ public class BD {
     public static void criaUtensilios() {
         Kitchenware kit;
         List<Kitchenware> rep = new ArrayList<Kitchenware>();
-        kit = new Kitchenware("Forma de bolo"); //801
+        kit = new Kitchenware("Forma de bolo", null); //801
         utensilios.put(kit.getId(), kit);
-        kit = new Kitchenware("Frigideira");
+        kit = new Kitchenware("Frigideira", null);
         utensilios.put(kit.getId(), kit);
-        kit = new Kitchenware("Amassador de batatas");
+        kit = new Kitchenware("Amassador de batatas", null);
         utensilios.put(kit.getId(), kit);
         rep.add(kit);
-        kit = new Kitchenware("Garfo grande resistente");
+        kit = new Kitchenware("Garfo grande resistente", null);
         utensilios.put(kit.getId(), kit);
         rep.add(kit);
         kit = new Kitchenware("Espremedor de Batatas", rep);
         rep.clear();
         utensilios.put(kit.getId(), kit);
-        kit = new Kitchenware("Liquidificador");
+        kit = new Kitchenware("Liquidificador", null);
         utensilios.put(kit.getId(), kit);
         rep.add(kit);
         kit = new Kitchenware("Multiprocessador", rep);
         utensilios.put(kit.getId(), kit);
         rep.clear();
-        kit = new Kitchenware("Forma de fundo removível"); //808
+        kit = new Kitchenware("Forma de fundo removível", null); //808
         utensilios.put(kit.getId(), kit);
-        kit = new Kitchenware("Batedeira");
+        kit = new Kitchenware("Batedeira", null);
         utensilios.put(kit.getId(), kit);
     }
 
@@ -167,7 +167,15 @@ public class BD {
                               ));
         //Associa com Food
         for (Ingredient ingredient : tempIng) {
-           ingredient.getIngredient().setIngredients(tempIng);
+                ingredient.getIngredient().setIngredients(tempIng);
+        }
+        //Associa com Kitchenware
+        for (Kitchenware kitchenware : tempKit) {
+                kitchenware.setRecipes(Arrays.asList(rec));
+        }
+        //Associa com Category
+        for (Category category : tempCat) {
+                category.setRecipes(Arrays.asList(rec));
         }
         rec.setIngredients(tempIng);
         receitas.put(rec.getId(), rec);
@@ -184,10 +192,18 @@ public class BD {
                         new Ingredient(rec, alimentos.get(1001), 2),
                         new Ingredient(rec, alimentos.get(1018), 300),
                         new Ingredient(rec, alimentos.get(1019), 200)));
-        alimentos.get(1017).setIngredients(tempIng);
-        alimentos.get(1001).setIngredients(tempIng);
-        alimentos.get(1018).setIngredients(tempIng);
-        alimentos.get(1019).setIngredients(tempIng);
+        //Associa com Food
+        for (Ingredient ingredient : tempIng) {
+                ingredient.getIngredient().setIngredients(tempIng);
+        }
+        //Associa com Kitchenware
+        for (Kitchenware kitchenware : tempKit) {
+                kitchenware.setRecipes(Arrays.asList(rec));
+        }
+        //Associa com Category
+        for (Category category : tempCat) {
+                category.setRecipes(Arrays.asList(rec));
+        }
         rec.setIngredients(tempIng);
         receitas.put(rec.getId(), rec);
     }
