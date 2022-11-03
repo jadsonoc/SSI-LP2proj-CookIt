@@ -15,9 +15,9 @@ public class IngredientView {
 
     public void printIngredient() {
         if ( this.ingredient.isFree(Arrays.asList(new Free(Free.GLUTEN), new Free(Free.LACTOSE))) ) {
-            System.out.printf("%5d %-20s");
+            System.out.printf("%d %-20s %s", this.ingredient.getId(), this.ingredient.getName(), " --> FREE");
         } else {
-            System.out.printf("%5d %-20s\n", this.ingredient.getId(), this.ingredient.getName());
+            System.out.printf("%d %-20s\n", this.ingredient.getId(), this.ingredient.getName());
         }
     }
 }

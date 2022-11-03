@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import models.Category;
 import models.Food;
 import models.Free;
@@ -18,9 +17,11 @@ import models.User;
 
 public class DB {
 
+    private static List<Free> semLacGluten = new ArrayList<Free>(
+        Arrays.asList(new Free(Free.GLUTEN), new Free(Free.LACTOSE)));
+    
+
     public static User usuario = new User("Jadson Costa", "jadsonoc@gmail.com", "jadsonoc", "123456", 5, false, false);
-    public static List<Free> semLacGluten = new ArrayList<Free>(
-            Arrays.asList(new Free(Free.GLUTEN), new Free(Free.LACTOSE)));
     public static Map<Integer, Unit> unidades = new HashMap<Integer, Unit>();
     public static Map<Integer, Category> categorias = new HashMap<Integer, Category>();
     public static Map<Integer, Food> alimentos = new HashMap<Integer, Food>();
@@ -64,9 +65,11 @@ public class DB {
         unidades.put(uni.getId(), uni);
         uni = new Unit("xícara", "xíc");
         unidades.put(uni.getId(), uni);
-        uni = new Unit("o quanto baste", "q.b.");
+        uni = new Unit("o quanto baste", "q.b."); //508
         unidades.put(uni.getId(), uni);
         uni = new Unit("fatias", "fat");
+        unidades.put(uni.getId(), uni);
+        uni = new Unit("dentes", "dts");
         unidades.put(uni.getId(), uni);
     }
 
@@ -88,7 +91,7 @@ public class DB {
         alimentos.put(foo.getId(), foo);
         foo = new Food("Azeite", unidades.get(503), semLacGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Cebola", unidades.get(501), semLacGluten);  //1008
+        foo = new Food("Cebola", unidades.get(504), semLacGluten);  //1008
         alimentos.put(foo.getId(), foo);
         foo = new Food("Tomate cereja", unidades.get(507), semLacGluten);
         alimentos.put(foo.getId(), foo);
@@ -111,6 +114,8 @@ public class DB {
         foo = new Food("Cream Cheese", unidades.get(501));
         alimentos.put(foo.getId(), foo);
         foo = new Food("Creme Gianduia (Nutella)", unidades.get(501));
+        alimentos.put(foo.getId(), foo);
+        foo = new Food("Alho", unidades.get(510));
         alimentos.put(foo.getId(), foo);
     }
 
@@ -158,7 +163,7 @@ public class DB {
         rec = new Recipe("Iscas de Filé Mignon Aceboladas", tempPrep.replaceAll(";", System.lineSeparator()), LocalTime.of(0, 20), 4, 1, tempCat, tempKit);
         tempIng = new ArrayList<Ingredient>(
                 Arrays.asList(new Ingredient(rec, alimentos.get(1000), 500),
-                              new Ingredient(rec, alimentos.get(1001), 2),
+                              new Ingredient(rec, alimentos.get(1001), 50),
                               new Ingredient(rec, alimentos.get(1008), 1),
                               new Ingredient(rec, alimentos.get(1010), 1),
                               new Ingredient(rec, alimentos.get(1011), 1)
@@ -188,7 +193,7 @@ public class DB {
         tempIng = new ArrayList<Ingredient>(
                 Arrays.asList(
                         new Ingredient(rec, alimentos.get(1017), 100),
-                        new Ingredient(rec, alimentos.get(1001), 2),
+                        new Ingredient(rec, alimentos.get(1001), 50),
                         new Ingredient(rec, alimentos.get(1018), 300),
                         new Ingredient(rec, alimentos.get(1019), 200)
                 ));
@@ -212,13 +217,14 @@ public class DB {
                 Arrays.asList(categorias.get(602), categorias.get(603)));
         tempKit = new ArrayList<Kitchenware>(
                 Arrays.asList());
-        tempPrep = "1. Em uma panela, cozinhe a couve-flor em água fervente até que esteja macia, sem amolecer demais.;2. Escorra, passe na água gelada, para interromper o cozimento, e pique a couve-flor em pedaços bem pequenos, como se fossem grãos de arroz.;3. Em uma panela, aqueça o azeite e refogue a cebola e o alho.;4. Acrescente os tomates e deixe refogar até murchar.;5. Junte a pimenta-do-reino, o sal e a couve- flor e cozinhe em fogo baixo, com a panela tampada, por cerca de 5 minutos.;6. Coloque o cheiro-verde e misture bem.";
+        tempPrep = "1. Em uma panela, cozinhe a couve-flor em água fervente até que esteja macia, sem amolecer demais;2. Escorra, passe na água gelada, para interromper o cozimento, e pique a couve-flor em pedaços bem pequenos, como se fossem grãos de arroz;3. Em uma panela, aqueça o azeite e refogue a cebola e o alho;4. Acrescente os tomates e deixe refogar até murchar;5. Junte a pimenta-do-reino, o sal e a couve-flor e cozinhe em fogo baixo, com a panela tampada, por aproximadamente 5 minutos;6. Coloque o cheiro-verde e misture bem.";
         rec = new Recipe("Arroz de Couve-flor", tempPrep.replaceAll(";", System.lineSeparator()), LocalTime.of(0, 20), 4, 2, tempCat, tempKit);
         tempIng = new ArrayList<Ingredient>(
                 Arrays.asList(
                         new Ingredient(rec, alimentos.get(1006), 1),
-                        new Ingredient(rec, alimentos.get(1007), 0.5f),
+                        new Ingredient(rec, alimentos.get(1007), 20),
                         new Ingredient(rec, alimentos.get(1008), 1),
+                        new Ingredient(rec, alimentos.get(1020), 2),
                         new Ingredient(rec, alimentos.get(1009), 0.5f),
                         new Ingredient(rec, alimentos.get(1010), 1),
                         new Ingredient(rec, alimentos.get(1011), 1),

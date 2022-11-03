@@ -46,7 +46,7 @@ public class IngredientsView {
                 if (ing.getIngredient().getUnit().getAbbreviation() == "q.b.")
                     System.out.printf("%s %s\n", ing.getIngredient().getName(), ing.getIngredient().getUnit().getAbbreviation());
                 else
-                    System.out.printf("%d%s %s\n", ing.getQuantity(), ing.getIngredient().getUnit().getAbbreviation(), ing.getIngredient().getName() );
+                    System.out.printf("%.0f %s %s\n", ing.getQuantity(), ing.getIngredient().getUnit().getAbbreviation(), ing.getIngredient().getName() );
             }
         } else {
             System.out.println("Nenhum ingrediente cadastrado!");

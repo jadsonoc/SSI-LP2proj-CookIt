@@ -26,7 +26,7 @@ public class Food {
         this.setId();
         this.name = name;
         this.unit = unit;
-        this.frees.addAll(frees);
+        this.frees = frees;
     }
 
     private void setId() {
@@ -74,7 +74,7 @@ public class Food {
     }
 
     public boolean isFree(List<Free> frees) {
-        return (this.frees.equals(frees));
+        return (( this.frees != null ) ? this.frees.equals(frees) : false);
     }
 
     @Override
