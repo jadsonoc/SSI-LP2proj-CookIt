@@ -14,7 +14,6 @@ public class KitchenwaresView {
 
     public void printKitchenwares() {
         if (this.kitchenwares.size() > 0) {
-            System.out.println(this.kitchenwares);
             System.out.println("-------- Utensílios necessários: ");
             for (Kitchenware kit : this.kitchenwares) {
                 if (kit.hasRepleacements()) {

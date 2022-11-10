@@ -14,10 +14,10 @@ public class IngredientView {
     }
 
     public void printIngredient() {
-        if ( this.ingredient.isFree(Arrays.asList(new Free(Free.GLUTEN), new Free(Free.LACTOSE))) ) {
-            System.out.printf("%d %-20s %s", this.ingredient.getId(), this.ingredient.getName(), " --> FREE");
+        if (this.ingredient.isFree(Arrays.asList(new Free(Free.GLUTEN), new Free(Free.LACTOSE)))) {
+            System.out.printf("%d %-50s %s\n", this.ingredient.getId(), this.ingredient.getName(), "*Free");
         } else {
-            System.out.printf("%d %-20s\n", this.ingredient.getId(), this.ingredient.getName());
+            System.out.printf("%d %-50s\n", this.ingredient.getId(), this.ingredient.getName());
         }
     }
 }

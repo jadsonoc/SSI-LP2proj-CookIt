@@ -11,6 +11,8 @@ public class RecipeView {
     }
     
     public void printRecipe() {
+        System.out.println("");
+        System.out.println("");
         System.out.println("-------- Receita n.º " + this.recipe.getId() + " --------");
         System.out.println("Tílulo: " + this.recipe.getTitulo());
         System.out.println("Tempo de Preparo: " + this.recipe.getTime());

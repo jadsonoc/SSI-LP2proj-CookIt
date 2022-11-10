@@ -24,12 +24,16 @@ public class SuggestRecipeView {
     }
 
     public SuggestRecipesScreenOptions mainMenu() {
-        SuggestRecipesScreenOptions op = SuggestRecipesScreenOptions.VAZIO;
-        System.out.println("0 - Voltar");
-        System.out.println("1 - Informar ingredientes à disposição");
-        int i = InputKeyboardStream.readInt("Selecione uma opção acima: ");
-        op = SuggestRecipesScreenOptions.values()[i];
-        return op;
+        SuggestRecipesScreenOptions selectedOption = SuggestRecipesScreenOptions.VAZIO;
+        int input = 0;
+        do {
+            System.out.println("");
+            System.out.println("0 - Voltar");
+            System.out.println("1 - Informar ingredientes à disposição");
+            input = InputKeyboardStream.readInt("Selecione uma opção acima: ");
+        } while (input < 0 || (input > SuggestRecipesScreenOptions.values().length - 1));
+        selectedOption = SuggestRecipesScreenOptions.values()[input];
+        return selectedOption;
     }
 
     public List<Food> chooseIngredientsMenu() {

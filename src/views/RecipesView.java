@@ -19,16 +19,19 @@ public class RecipesView {
     }
 
     public RecipesScreenOptions mainMenu() {
-        //Aqui necessita uma verificação do tamanho do array
-        RecipesScreenOptions op = RecipesScreenOptions.VAZIO;
-        System.out.println("0 - Voltar");
-        System.out.println("1 - Listar todas as Receitas");
-        System.out.println("2 - Listar receitas Sem Lactose");
-        System.out.println("3 - Listar receitas Sem Glúten");
-        System.out.println("4 - Listar receitas Sem Glúten e Sem Lactose");
-        int i = InputKeyboardStream.readInt("Selecione uma opção acima: ");
-        op = RecipesScreenOptions.values()[i];
-        return op;
+        RecipesScreenOptions selectedOption = RecipesScreenOptions.VAZIO;
+        int input = 0;
+        do {
+            System.out.println("");
+            System.out.println("0 - Voltar");
+            System.out.println("1 - Listar todas as Receitas");
+            System.out.println("2 - Listar receitas Sem Lactose");
+            System.out.println("3 - Listar receitas Sem Glúten");
+            System.out.println("4 - Listar receitas Sem Glúten e Sem Lactose");
+            input = InputKeyboardStream.readInt("Selecione uma opção acima: ");
+        } while (input < 0 || input > (RecipesScreenOptions.values().length - 1));
+        selectedOption = RecipesScreenOptions.values()[input];
+        return selectedOption;
     }
 
     public void printRecipes() {
@@ -57,7 +60,7 @@ public class RecipesView {
 
     public void printFreeRecipes() {
         if (this.recipes.size() > 0) {
-            System.out.print("******************* Free *********************");
+            System.out.println("******************* Free *********************");
             for (Recipe rec : recipes.values()) {
                 RecipeView recipeView = new RecipeView(rec);
                 recipeView.printRecipe();

@@ -6,7 +6,7 @@ import util.InputKeyboardStream;
 public class ProfileView {
     
     public static enum ProfileScreenOptions {
-        VAZIO, SHOW, ADD, EDIT, DELETE
+        VAZIO, SHOW //, ADD, EDIT, DELETE
     };
 
     private User user;
@@ -16,12 +16,16 @@ public class ProfileView {
     }
 
     public ProfileScreenOptions mainMenu() {
-        ProfileScreenOptions op = ProfileScreenOptions.VAZIO;
-        System.out.println("0 - Voltar");
-        System.out.println("1 - Mostrar Perfil");
-        int i = InputKeyboardStream.readInt("Selecione uma opção acima: ");
-        op = ProfileScreenOptions.values()[i];
-        return op;
+        ProfileScreenOptions selectedOption = ProfileScreenOptions.VAZIO;
+        int input = 0;
+        do {
+            System.out.println("");
+            System.out.println("0 - Voltar");
+            System.out.println("1 - Mostrar Perfil");
+            input = InputKeyboardStream.readInt("Selecione uma opção acima: ");
+        } while (input < 0 || input > (ProfileScreenOptions.values().length - 1));
+        selectedOption = ProfileScreenOptions.values()[input];
+        return selectedOption;
     }
 
     public void printProfile() {

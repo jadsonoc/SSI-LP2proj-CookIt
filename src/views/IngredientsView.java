@@ -9,7 +9,7 @@ import util.InputKeyboardStream;
 public class IngredientsView {
     
     public static enum IngredientsScreenOptions {
-        VAZIO, LIST, ADD, EDIT, DELETE
+        VAZIO, LIST //, ADD, EDIT, DELETE
     };
     
     private Map<Integer, Food> ingredients;
@@ -24,13 +24,17 @@ public class IngredientsView {
         this.ingredientsRecipe = ingredients;
     }
 
-    public IngredientsScreenOptions mainMenu() { 
-        IngredientsScreenOptions op = IngredientsScreenOptions.VAZIO;
-        System.out.println("0 - Votar");
-        System.out.println("1 - Listar todos os Ingredientes");
-        int i = InputKeyboardStream.readInt("Escolha uma opção acima: ");
-        op = IngredientsScreenOptions.values()[i];
-        return op;
+    public IngredientsScreenOptions mainMenu() {
+        IngredientsScreenOptions selectedOption = IngredientsScreenOptions.VAZIO;
+        int input = 0;
+        do {
+            System.out.println("");
+            System.out.println("0 - Voltar");
+            System.out.println("1 - Listar todos os Ingredientes");
+            input = InputKeyboardStream.readInt("Escolha uma das opções acima: ");
+        } while (input < 0 || input > (IngredientsScreenOptions.values().length - 1));
+        selectedOption = IngredientsScreenOptions.values()[input];
+        return selectedOption;
     }
 
     public void printIngredients() {
