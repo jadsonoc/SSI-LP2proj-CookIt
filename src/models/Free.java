@@ -19,5 +19,12 @@ public class Free {
     public void setValueFree(int valueFree) {
         this.valueFree = valueFree;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    
     
 }

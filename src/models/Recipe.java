@@ -142,7 +142,8 @@ public class Recipe {
     } 
     
     public boolean isFree(List<Free> frees) {
-        return this.ingredients.stream().allMatch(i -> i.getIngredient().isFree(frees));
+        return this.ingredients.stream()
+                               .allMatch(i -> i.getIngredient().isFree(frees));
     }
 
 

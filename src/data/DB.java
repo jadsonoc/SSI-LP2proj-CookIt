@@ -19,7 +19,8 @@ public class DB {
 
     private static List<Free> semLacGluten = new ArrayList<Free>(
         Arrays.asList(new Free(Free.GLUTEN), new Free(Free.LACTOSE)));
-    
+   private static List<Free> semGluten = new ArrayList<Free>(
+        Arrays.asList(new Free(Free.GLUTEN)));
 
     public static User usuario = new User("Jadson Costa", "jadsonoc@gmail.com", "jadsonoc", "123456", 5, false, false);
     public static Map<Integer, Unit> unidades = new HashMap<Integer, Unit>();
@@ -75,15 +76,15 @@ public class DB {
 
     public static void criaAlimentos() {
         Food foo;
-        foo = new Food("Filé mingnon", unidades.get(501)); //1000
+        foo = new Food("Filé mingnon", unidades.get(501), semLacGluten); //1000
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Manteiga", unidades.get(501));
+        foo = new Food("Manteiga", unidades.get(501), semGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Carne moída", unidades.get(501));
+        foo = new Food("Carne moída", unidades.get(501), semLacGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Presunto fatiado", unidades.get(501));
+        foo = new Food("Presunto fatiado", unidades.get(501), semLacGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Tomate", unidades.get(501));
+        foo = new Food("Tomate", unidades.get(501), semLacGluten);
         alimentos.put(foo.getId(), foo);
         foo = new Food("Orégano", unidades.get(508), semLacGluten);
         alimentos.put(foo.getId(), foo);
@@ -103,7 +104,7 @@ public class DB {
         alimentos.put(foo.getId(), foo);
         foo = new Food("Ovo", unidades.get(504), semLacGluten); //1013
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Leite", unidades.get(503));
+        foo = new Food("Leite", unidades.get(503), semGluten);
         alimentos.put(foo.getId(), foo);
         foo = new Food("Pão de forma", unidades.get(509));
         alimentos.put(foo.getId(), foo);
@@ -111,11 +112,11 @@ public class DB {
         alimentos.put(foo.getId(), foo);
         foo = new Food("Biscoito de chocolate", unidades.get(501)); //1017
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Cream Cheese", unidades.get(501));
+        foo = new Food("Cream Cheese", unidades.get(501), semGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Creme Gianduia (Nutella)", unidades.get(501));
+        foo = new Food("Creme Gianduia (Nutella)", unidades.get(501), semGluten);
         alimentos.put(foo.getId(), foo);
-        foo = new Food("Alho", unidades.get(510));
+        foo = new Food("Alho", unidades.get(510), semLacGluten);
         alimentos.put(foo.getId(), foo);
     }
 

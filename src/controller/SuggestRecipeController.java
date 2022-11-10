@@ -56,7 +56,5 @@ public class SuggestRecipeController {
             RecipeView recView = new RecipeView(chosenRec);
             recView.printRecipe();
         }
-
     }
-    
 }
