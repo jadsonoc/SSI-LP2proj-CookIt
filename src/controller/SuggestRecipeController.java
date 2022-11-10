@@ -39,33 +39,24 @@ public class SuggestRecipeController {
     }
 
     private void suggestRecipe() {
-        
-        List<Food> chosenIngs = suggestRecipeView.chooseIngredientsMenu();
 
-        // BD.receitas.entrySet()
-        //         .stream()
-        //         .filter(map -> map.getValue().isElegible(ings))
-        //         .forEach(map -> new RecipeView(map.getValue()).printRecipe());
-        // BD.receitas.entrySet()
-        // .stream()
-        // .filter(map -> map.getValue().isElegible(ings))
-        // .forEach(map -> new RecipesView(map).chooseRecipeMenu());
+        List<Food> chosenIngs = suggestRecipeView.chooseIngredientsMenu();
+        //Transforma o atributo receitas local em um entrySet
+        //Que possibilita a filtragem por "isElegible"
+        //E retorna outro Map para uso nas views
         Map<Integer, Recipe> elegibleRecipes = this.recipes.entrySet()
                 .stream()
                 .filter(map -> map.getValue().isElegible(chosenIngs))
                 .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
-        
-        // SuggestRecipeView suggestedRecipeView = new SuggestRecipeView(elegibleRecipes, null);
-        
-        // List<Recipe> chosenRecs = suggestedRecipeView.chooseRecipesMenu();
-        // RecipesView chosenRecipesView = new RecipesView()
-        
+
         RecipesView elegibleRecipesView = new RecipesView(elegibleRecipes);
-        Recipe chosenRec = elegibleRecipesView.chooseRecipeMenu();
-        RecipeView recView = new RecipeView(chosenRec);
-        recView.printRecipe();
-               
+        //Somente dá seguimento se tiver havido receita elegível
+        if (elegibleRecipes.size() > 0) {
+            Recipe chosenRec = elegibleRecipesView.chooseRecipeMenu();
+            RecipeView recView = new RecipeView(chosenRec);
+            recView.printRecipe();
+        }
+
     }
-
-
+    
 }

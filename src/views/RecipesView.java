@@ -26,18 +26,26 @@ public class RecipesView {
     }
 
     public void printRecipes() {
-        System.out.println("******************* Receitas *********************");
-        for (Recipe rec : recipes.values()) {
-            RecipeView recipeView = new RecipeView(rec);
-            recipeView.printRecipe();
+        if (this.recipes.size() > 0) {
+            System.out.println("******************* Receitas *********************");
+            for (Recipe rec : recipes.values()) {
+                RecipeView recipeView = new RecipeView(rec);
+                recipeView.printRecipe();
+            }
+        } else {
+            System.out.println("************ Nenhuma receita cadastrada *************");
         }
     }
 
     public void printElegibleRecipes() {
-        System.out.println("*** Receitas que contêm os ingredientes escolhidos: ***");
-        for (Recipe rec : recipes.values()) {
-            RecipeView recipeView = new RecipeView(rec);
-            recipeView.printRecipeShort();
+        if (this.recipes.size() > 0) {
+            System.out.println("*** Receitas que contêm os ingredientes escolhidos: ***");
+            for (Recipe rec : recipes.values()) {
+                RecipeView recipeView = new RecipeView(rec);
+                recipeView.printRecipeShort();
+            }
+        } else {
+            System.out.println("*** Nenhuma receita encontrada para esses ingredients ***");
         }
     }
 

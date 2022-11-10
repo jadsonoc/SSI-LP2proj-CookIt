@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import util.Sequences;
@@ -22,13 +23,19 @@ public class Kitchenware {
     public Kitchenware(String name, List<Kitchenware> repleacements) {
         this.id = Sequences.SEQ_KITCHENWARE++;
         this.name = name;
-        this.repleacements = repleacements;
+        if (repleacements != null) {
+            this.repleacements = new ArrayList<Kitchenware>();
+            this.repleacements.addAll(repleacements);
+        }
     }
 
     public Kitchenware(String name, List<Kitchenware> repleacements, List<Recipe> recipes) {
         this.id = Sequences.SEQ_KITCHENWARE++;
         this.name = name;
-        this.repleacements = repleacements;
+        if (repleacements != null) {
+            this.repleacements = new ArrayList<Kitchenware>();
+            this.repleacements.addAll(repleacements);
+        }
         this.recipes = recipes;
     }
 

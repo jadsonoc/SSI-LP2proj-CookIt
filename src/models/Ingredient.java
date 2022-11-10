@@ -8,10 +8,20 @@ public class Ingredient {
 
     private float quantity;
 
+    private boolean required;
+
     public Ingredient(Recipe recipe, Food ingredient, float quantity) {
         this.recipe = recipe;
         this.ingredient = ingredient;
         this.quantity = quantity;
+        this.required = false;
+    }
+
+    public Ingredient(Recipe recipe, Food ingredient, float quantity, boolean required) {
+        this.recipe = recipe;
+        this.ingredient = ingredient;
+        this.quantity = quantity;
+        this.required = required;
     }
 
     public Recipe getRecipe() {
@@ -36,6 +46,10 @@ public class Ingredient {
 
     public void setQuantity(float quantity) {
         this.quantity = quantity;
+    }
+
+    public boolean isRequired() {
+        return this.required;
     }
 
     @Override

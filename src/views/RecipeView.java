@@ -17,7 +17,7 @@ public class RecipeView {
         System.out.println("Rendimento: " + this.recipe.getServe() + " porções.");
         IngredientsView ingredientsView = new IngredientsView(this.recipe.getIngredients());
         ingredientsView.printIngredients();
-        System.out.println("------- Modo de Preparo: -------- ");
+        System.out.println("------- Modo de Preparo:  ");
         System.out.println(this.recipe.getPreparation());
         KitchenwaresView kitchenwaresView = new KitchenwaresView(this.recipe.getKitchenwares());
         kitchenwaresView.printKitchenwares();

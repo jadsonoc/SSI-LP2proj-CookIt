@@ -13,17 +13,20 @@ public class KitchenwaresView {
     }
 
     public void printKitchenwares() {
-        System.out.println("-------- Utensílios necessários: ----------");
-        for (Kitchenware kit : this.kitchenwares) {
-            if (kit.hasRepleacements()) {
-                System.out.println(kit.getName());
-                System.out.println("Você pode substituir por: ");
-                System.out.println(kit.getRepleacements());
-                for (Kitchenware rep : kit.getRepleacements()) {
-                    System.out.println(rep.getName());
-                }
-            } else
-                System.out.println(kit.getName());
+        if (this.kitchenwares.size() > 0) {
+            System.out.println(this.kitchenwares);
+            System.out.println("-------- Utensílios necessários: ");
+            for (Kitchenware kit : this.kitchenwares) {
+                if (kit.hasRepleacements()) {
+                    System.out.print(kit.getName());
+                    System.out.print(" -> Você pode substituir por: ");
+                    System.out.println(kit.getRepleacements());
+                    for (Kitchenware rep : kit.getRepleacements()) {
+                        System.out.print(rep.getName() + " ");
+                    }
+                } else
+                    System.out.println(kit.getName());
+            }
         }
     }
         

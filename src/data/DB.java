@@ -162,8 +162,8 @@ public class DB {
         tempPrep = "1. Corte o filé mignon em tiras com espessura de aproximadamente 1 centímetro;2. Corte a cebola descascada ao meio e, depois em meias luas no sentido contrário aos gomos;3. Em um recipiente, tempere o filé mignon com sal e pimenta do reino o quanto baste (q.b.);4. Reserve em geladeira por 10 minutos;5. Em uma frigideira grande aqueça a manteiga, refogue o filé e deixe dourar, sem mexer muito para não juntar líquido;6. Acrescente a cebola e refogue até dourar;7. Sirva em seguida.;Sugestão de acompanhamento: Arroz branco e/ou Saladinha.";
         rec = new Recipe("Iscas de Filé Mignon Aceboladas", tempPrep.replaceAll(";", System.lineSeparator()), LocalTime.of(0, 20), 4, 1, tempCat, tempKit);
         tempIng = new ArrayList<Ingredient>(
-                Arrays.asList(new Ingredient(rec, alimentos.get(1000), 500),
-                              new Ingredient(rec, alimentos.get(1001), 50),
+                Arrays.asList(new Ingredient(rec, alimentos.get(1000), 500, true),
+                              new Ingredient(rec, alimentos.get(1001), 50, true),
                               new Ingredient(rec, alimentos.get(1008), 1),
                               new Ingredient(rec, alimentos.get(1010), 1),
                               new Ingredient(rec, alimentos.get(1011), 1)
@@ -192,10 +192,10 @@ public class DB {
         rec = new Recipe("Cheesecake de Nutella", tempPrep.replaceAll(";", System.lineSeparator()), LocalTime.of(1, 00), 8, 3, tempCat, tempKit);
         tempIng = new ArrayList<Ingredient>(
                 Arrays.asList(
-                        new Ingredient(rec, alimentos.get(1017), 100),
+                        new Ingredient(rec, alimentos.get(1017), 100, true),
                         new Ingredient(rec, alimentos.get(1001), 50),
-                        new Ingredient(rec, alimentos.get(1018), 300),
-                        new Ingredient(rec, alimentos.get(1019), 200)
+                        new Ingredient(rec, alimentos.get(1018), 300, true),
+                        new Ingredient(rec, alimentos.get(1019), 200, true)
                 ));
         //Associa com Food
         for (Ingredient ingredient : tempIng) {
@@ -221,7 +221,7 @@ public class DB {
         rec = new Recipe("Arroz de Couve-flor", tempPrep.replaceAll(";", System.lineSeparator()), LocalTime.of(0, 20), 4, 2, tempCat, tempKit);
         tempIng = new ArrayList<Ingredient>(
                 Arrays.asList(
-                        new Ingredient(rec, alimentos.get(1006), 1),
+                        new Ingredient(rec, alimentos.get(1006), 1, true),
                         new Ingredient(rec, alimentos.get(1007), 20),
                         new Ingredient(rec, alimentos.get(1008), 1),
                         new Ingredient(rec, alimentos.get(1020), 2),
@@ -254,8 +254,8 @@ public class DB {
         rec = new Recipe("Crepioca Rápida", tempPrep.replaceAll(";", System.lineSeparator()), LocalTime.of(0, 10), 4, 2, tempCat, tempKit);
         tempIng = new ArrayList<Ingredient>(
                 Arrays.asList(
-                        new Ingredient(rec, alimentos.get(1013), 4),
-                        new Ingredient(rec, alimentos.get(1016), 1),
+                        new Ingredient(rec, alimentos.get(1013), 4, true),
+                        new Ingredient(rec, alimentos.get(1016), 1, true),
                         new Ingredient(rec, alimentos.get(1011), 4)
                 ));
         //Associa com Food

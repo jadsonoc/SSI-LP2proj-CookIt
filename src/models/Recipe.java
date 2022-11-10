@@ -1,6 +1,7 @@
 package models;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -117,16 +118,28 @@ public class Recipe {
     }
 
     public boolean isElegible(List<Food> foods) {
-        int contador = 0;
+        int required = 0;
+
         for (Food food : foods) {
             for (Ingredient ingredient : this.ingredients) {
                 if (ingredient.getIngredient().equals(food)) {
-                    contador++;
+                    if (ingredient.isRequired())
+                        required++;
                 }
             }
         }
-        return (contador > ((this.ingredients.size() / 2) - 1));
+        //(counter > ((this.ingredients.size() / 2) - 1)) && (
+        return (required == this.getRequiredIngredientsTotal());
     }
+
+    public int getRequiredIngredientsTotal() {
+        int requiredIngredients = 0;
+        for (Ingredient ingredient : this.ingredients) {
+            if (ingredient.isRequired())
+                requiredIngredients++;
+        }
+        return requiredIngredients;
+    } 
     
     public boolean isFree(List<Free> frees) {
         return this.ingredients.stream().allMatch(i -> i.getIngredient().isFree(frees));

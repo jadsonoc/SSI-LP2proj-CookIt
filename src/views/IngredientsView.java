@@ -41,7 +41,7 @@ public class IngredientsView {
                 ingredientScreen.printIngredient();
             }
         } else if (this.ingredientsRecipe != null) {
-            System.out.println("------- Ingredientes necessários: -------- ");
+            System.out.println("------- Ingredientes necessários: ");
             for (Ingredient ing : this.ingredientsRecipe) {
                 if (ing.getIngredient().getUnit().getAbbreviation() == "q.b.")
                     System.out.printf("%s %s\n", ing.getIngredient().getName(), ing.getIngredient().getUnit().getAbbreviation());
