@@ -9,7 +9,7 @@ import util.InputKeyboardStream;
 
 public class RecipesView {
     public static enum RecipesScreenOptions {
-        VAZIO, LIST, LIST_FREE_LAC, LIST_FREE_GLU, LIST_FREE
+        VAZIO, LIST, LIST_FREES
     };
 
     private Map<Integer, Recipe> recipes;
@@ -25,9 +25,7 @@ public class RecipesView {
             System.out.println("");
             System.out.println("0 - Voltar");
             System.out.println("1 - Listar todas as Receitas");
-            System.out.println("2 - Listar receitas Sem Lactose");
-            System.out.println("3 - Listar receitas Sem Glúten");
-            System.out.println("4 - Listar receitas Sem Glúten e Sem Lactose");
+            System.out.println("2 - Listar receitas especiais para intolerâncias alimentares");
             input = InputKeyboardStream.readInt("Selecione uma opção acima: ");
         } while (input < 0 || input > (RecipesScreenOptions.values().length - 1));
         selectedOption = RecipesScreenOptions.values()[input];
@@ -55,18 +53,6 @@ public class RecipesView {
             }
         } else {
             System.out.println("*** Nenhuma receita encontrada para esses ingredients ***");
-        }
-    }
-
-    public void printFreeRecipes() {
-        if (this.recipes.size() > 0) {
-            System.out.println("******************* Free *********************");
-            for (Recipe rec : recipes.values()) {
-                RecipeView recipeView = new RecipeView(rec);
-                recipeView.printRecipe();
-            }
-        } else {
-            System.out.println("************ Nenhuma receita cadastrada *************");
         }
     }
 

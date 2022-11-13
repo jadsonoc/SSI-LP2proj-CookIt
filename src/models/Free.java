@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 public class Free {
     
     public static final int LACTOSE = 1;
@@ -8,8 +10,15 @@ public class Free {
 
     private int valueFree;
 
+    private List<Food> foods;
+
     public Free(int valueFree) {
         this.valueFree = valueFree;
+    }
+
+    public Free(int valueFree, List<Food> foods) {
+        this.valueFree = valueFree;
+        this.foods = foods;
     }
 
     public int getValueFree() {
@@ -20,11 +29,12 @@ public class Free {
         this.valueFree = valueFree;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public List<Food> getFoods() {
+        return foods;
     }
 
-    
-    
+    public void setFoods(List<Food> foods) {
+        this.foods = foods;
+    }
+
 }

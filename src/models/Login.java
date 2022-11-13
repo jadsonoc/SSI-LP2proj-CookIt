@@ -31,7 +31,6 @@ public class Login {
             this.password = password;
         } 
         else throw new RuntimeException("Erro de Login: Necessário informar a senha.");
-        
     }
 
 }

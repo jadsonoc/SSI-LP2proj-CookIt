@@ -41,11 +41,15 @@ public class Recipe {
         this.kitchenwares = kitchenwares;
     }
 
-    public static Map<Integer, Recipe> getRecipesFree( List<Free> frees ) {
-        Map<Integer, Recipe> freeRecipes = DB.receitas.entrySet()
-        .stream()
-        .filter(map -> map.getValue().isFree(frees))
-                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+    public static List<Recipe> getRecipesFree( List<Free> frees ) {
+        //Map<Integer, Recipe> freeRecipes = DB.receitas.entrySet()
+        List<Recipe> freeRecipes = new ArrayList<Recipe>();
+        DB.receitas.entrySet()
+                .stream()
+                .filter(map -> map.getValue().isFree(frees))
+                .forEach(map -> freeRecipes.add(map.getValue()));
+                //.collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+        System.out.println(freeRecipes);
         return freeRecipes;
     }
 

@@ -6,14 +6,17 @@ import java.util.List;
 import data.DB;
 import models.Free;
 import models.Recipe;
+import views.FreeRecipesView;
 import views.RecipesView;
 
 public class RecipesController {
     
     private RecipesView recipesView;
+    private FreeRecipesView freeRecipesView;
 
     public RecipesController() {
         recipesView = new RecipesView(DB.receitas);
+        freeRecipesView = new FreeRecipesView();
     }
 
     public void mainMenu() {
@@ -24,14 +27,9 @@ public class RecipesController {
                 case LIST:
                     this.list();
                     break;
-                case LIST_FREE_LAC:
-                    this.listFree(Arrays.asList(new Free(Free.LACTOSE)));
+                case LIST_FREES:
+                    this.freeRecipesController();
                     break;
-                case LIST_FREE_GLU:
-                    this.listFree(Arrays.asList(new Free(Free.GLUTEN)));
-                    break;
-                case LIST_FREE:
-                    this.listFree(Arrays.asList(new Free(Free.GLUTEN), new Free(Free.LACTOSE)));
                 default:
                     break;
             }
@@ -42,9 +40,9 @@ public class RecipesController {
         recipesView.printRecipes();
     }
 
-    private void listFree(List<Free> frees) {
-        recipesView = new RecipesView(Recipe.getRecipesFree(frees));
-        recipesView.printFreeRecipes();
+    private void freeRecipesController() {
+        FreeRecipesController freeRecipesCtrl = new FreeRecipesController();
+        freeRecipesCtrl.mainMenu();
     }
 
 }
