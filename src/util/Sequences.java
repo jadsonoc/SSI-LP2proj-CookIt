@@ -13,4 +13,5 @@ public abstract class Sequences {
     public static Integer SEQ_RECIPES = 1;
     
     public static Integer SEQ_USER = 900;
+
 }

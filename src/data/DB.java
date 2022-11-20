@@ -19,7 +19,7 @@ public class DB {
 
         public static User usuario = new User("Jadson Costa", "jadsonoc@gmail.com", "jadsonoc", "123456", 5, false,
                         false);
-        public static List<Food> alimentosLivresDeIntolerancias = new ArrayList<Food>();
+       
         public static Map<Integer, Unit> unidades = new HashMap<Integer, Unit>();
         public static Map<Integer, Category> categorias = new HashMap<Integer, Category>();
         public static Map<Integer, Food> alimentos = new HashMap<Integer, Food>();
@@ -72,70 +72,85 @@ public class DB {
 
         public static void criaAlimentos() {
                 Food foo;
-                Free semG, semL;
-                semG = new Free(Free.GLUTEN);
+                Free semL, semG;
                 semL = new Free(Free.LACTOSE);
-                foo = new Food("Filé mingnon", unidades.get(501), Arrays.asList(semG, semL)); // 1000
+                semG = new Free(Free.GLUTEN);
+                foo = new Food("Filé mingnon", unidades.get(501), Arrays.asList(semL, semG)); // 1000
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
+                semL.addFood(foo);
+                semG.addFood(foo);
                 foo = new Food("Manteiga", unidades.get(501), Arrays.asList(semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Carne moída", unidades.get(501), Arrays.asList(semG, semL));
+                semG.addFood(foo);
+                foo = new Food("Carne moída", unidades.get(501), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Presunto fatiado", unidades.get(501), Arrays.asList(semG, semL));
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Presunto fatiado", unidades.get(501), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Tomate", unidades.get(501), Arrays.asList(semG, semL));
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Tomate", unidades.get(501), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Orégano", unidades.get(508), Arrays.asList(semG, semL));
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Orégano", unidades.get(508), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Couve-flor", unidades.get(504), Arrays.asList(semG, semL));
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Couve-flor", unidades.get(504), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Azeite", unidades.get(503), Arrays.asList(semG, semL));
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Azeite", unidades.get(503), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Cebola", unidades.get(504), Arrays.asList(semG, semL)); // 1008
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Cebola", unidades.get(504), Arrays.asList(semL, semG)); // 1008
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Tomate cereja", unidades.get(507), Arrays.asList(semG, semL));
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Tomate cereja", unidades.get(507), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Pimenta do reino", unidades.get(508), Arrays.asList(semG, semL));
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Pimenta do reino", unidades.get(508), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Sal", unidades.get(508), Arrays.asList(semG, semL));
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Sal", unidades.get(508), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Tempero Verde", unidades.get(505), Arrays.asList(semG, semL));
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Tempero Verde", unidades.get(505), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Ovo", unidades.get(504), Arrays.asList(semG, semL)); // 1013
+                semL.addFood(foo);
+                semG.addFood(foo);
+                foo = new Food("Ovo", unidades.get(504), Arrays.asList(semL, semG)); // 1013
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
+                semL.addFood(foo);
+                semG.addFood(foo);
                 foo = new Food("Leite", unidades.get(503), Arrays.asList(semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
+                semG.addFood(foo);
                 foo = new Food("Pão de forma", unidades.get(509));
                 alimentos.put(foo.getId(), foo);
-                foo = new Food("Tapioca", unidades.get(507), Arrays.asList(semG, semL));
+                foo = new Food("Tapioca", unidades.get(507), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
+                semL.addFood(foo);
+                semG.addFood(foo);
                 foo = new Food("Biscoito de chocolate", unidades.get(501)); // 1017
                 alimentos.put(foo.getId(), foo);
                 foo = new Food("Cream Cheese", unidades.get(501), Arrays.asList(semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
+                semG.addFood(foo);
                 foo = new Food("Creme Gianduia (Nutella)", unidades.get(501), Arrays.asList(semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
-                foo = new Food("Alho", unidades.get(510), Arrays.asList(semG, semL));
+                semG.addFood(foo);
+                foo = new Food("Alho", unidades.get(510), Arrays.asList(semL, semG));
                 alimentos.put(foo.getId(), foo);
-                alimentosLivresDeIntolerancias.add(foo);
+                semL.addFood(foo);
+                semG.addFood(foo);
         }
 
         public static void criaUtensilios() {
@@ -183,10 +198,10 @@ public class DB {
                                 LocalTime.of(0, 20), 4, 1, tempCat, tempKit);
                 tempIng = new ArrayList<Ingredient>(
                                 Arrays.asList(new Ingredient(rec, alimentos.get(1000), 500, true),
-                                                new Ingredient(rec, alimentos.get(1001), 50, true),
-                                                new Ingredient(rec, alimentos.get(1008), 1),
-                                                new Ingredient(rec, alimentos.get(1010), 1),
-                                                new Ingredient(rec, alimentos.get(1011), 1)));
+                                              new Ingredient(rec, alimentos.get(1001), 50, true),
+                                              new Ingredient(rec, alimentos.get(1008), 1),
+                                              new Ingredient(rec, alimentos.get(1010), 1),
+                                              new Ingredient(rec, alimentos.get(1011), 1)));
                 // Associa com Food
                 for (Ingredient ingredient : tempIng) {
                         ingredient.getIngredient().setIngredients(tempIng);

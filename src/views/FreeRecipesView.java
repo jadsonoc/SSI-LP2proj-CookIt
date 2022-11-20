@@ -1,7 +1,7 @@
 package views;
 
 import java.util.List;
-
+import java.util.Map;
 import models.Free;
 import models.Recipe;
 import util.InputKeyboardStream;
@@ -12,12 +12,15 @@ public class FreeRecipesView {
         VAZIO, LIST_FREE_LAC, LIST_FREE_GLU, LIST_FREE
     };
 
+    private Map<Integer, Recipe> recipes;
+    
     private List<Free> frees;
 
     public FreeRecipesView() {
     }
     
-    public FreeRecipesView(List<Free> frees) {
+    public FreeRecipesView(Map<Integer, Recipe> recipes, List<Free> frees) {
+        this.recipes = recipes;
         this.frees = frees;
     }
 
@@ -38,15 +41,16 @@ public class FreeRecipesView {
 
     public void printFreeRecipes() {
         if (this.frees.size() > 1) {
+            //Isso, futuramente, terá de ser mudado, pois, poderão surgir novos itens para Free
             System.out.println("*********** Receitas Livres de Glúten e Lactose ***********");
-            for (Recipe rec : Recipe.getRecipesFree(frees)) {
+            for (Recipe rec : Recipe.getRecipesFree(recipes, frees)) {
                 RecipeView recipeView = new RecipeView(rec);
                 recipeView.printRecipe();
             }
         } else if (this.frees.size() > 0) {
             String title = (this.frees.get(0).getValueFree() == Free.GLUTEN) ? "Glúten" : "Lactose";
             System.out.println("*********** Receitas Livres de " + title + " ***********");
-            for (Recipe rec : Recipe.getRecipesFree(frees)) {
+            for (Recipe rec : Recipe.getRecipesFree(recipes, frees)) {
                 RecipeView recipeView = new RecipeView(rec);
                 recipeView.printRecipe();
             }

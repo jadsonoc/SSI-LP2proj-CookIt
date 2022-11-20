@@ -33,7 +33,7 @@ public class Category {
         this.name = name;
     }
 
-    public List<Recipe> getRecipes() {
+    public List<Recipe> getAssociatedRecipes() {
         return recipes;
     }
 

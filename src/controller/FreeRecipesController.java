@@ -35,17 +35,17 @@ public class FreeRecipesController {
     }
 
     private void listFreeLactose() {
-        FreeRecipesView freeRecipesView = new FreeRecipesView(Arrays.asList(new Free(Free.LACTOSE)));
+        FreeRecipesView freeRecipesView = new FreeRecipesView(DB.receitas, Arrays.asList(new Free(Free.LACTOSE)));
         freeRecipesView.printFreeRecipes();
     }
 
     private void listFreeGluten() {
-        FreeRecipesView freeRecipesView = new FreeRecipesView(Arrays.asList(new Free(Free.GLUTEN)));
+        FreeRecipesView freeRecipesView = new FreeRecipesView(DB.receitas, Arrays.asList(new Free(Free.GLUTEN)));
         freeRecipesView.printFreeRecipes();
     }
 
     private void listFreeLactoseAndGluten() {
-        FreeRecipesView freeRecipesView = new FreeRecipesView(Arrays.asList(new Free(Free.LACTOSE), new Free(Free.GLUTEN)));
+        FreeRecipesView freeRecipesView = new FreeRecipesView(DB.receitas, Arrays.asList(new Free(Free.LACTOSE), new Free(Free.GLUTEN)));
         freeRecipesView.printFreeRecipes();
     }
     

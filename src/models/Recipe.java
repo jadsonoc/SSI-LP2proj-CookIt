@@ -4,9 +4,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
-import data.DB;
 import util.Sequences;
 
 public class Recipe {
@@ -29,6 +26,15 @@ public class Recipe {
 
     private List<Kitchenware> kitchenwares;
 
+    public Recipe(String titulo, String preparation, LocalTime time, int serve, int difficulty) {
+        this.id = Sequences.SEQ_RECIPES++;
+        this.titulo = titulo;
+        this.preparation = preparation;
+        this.time = time;
+        this.serve = serve;
+        this.difficulty = difficulty;
+    }
+
     public Recipe(String titulo, String preparation, LocalTime time, int serve, int difficulty,
         List<Category> categories, List<Kitchenware> kitchenwares) {
         this.id = Sequences.SEQ_RECIPES++;
@@ -41,16 +47,22 @@ public class Recipe {
         this.kitchenwares = kitchenwares;
     }
 
-    public static List<Recipe> getRecipesFree( List<Free> frees ) {
-        //Map<Integer, Recipe> freeRecipes = DB.receitas.entrySet()
+    public static List<Recipe> getRecipesFree(Map<Integer, Recipe> recipes, List<Free> frees) {
         List<Recipe> freeRecipes = new ArrayList<Recipe>();
-        DB.receitas.entrySet()
+        recipes.entrySet()
                 .stream()
                 .filter(map -> map.getValue().isFree(frees))
                 .forEach(map -> freeRecipes.add(map.getValue()));
-                //.collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
-        System.out.println(freeRecipes);
         return freeRecipes;
+    }
+
+    public static List<Recipe> getRecipesUnderSkills(Map<Integer, Recipe> recipes, int skills) {
+        List<Recipe> skillsRecipes = new ArrayList<Recipe>();
+        recipes.entrySet()
+                .stream()
+                .filter(map -> map.getValue().getDifficulty() <= skills)
+                .forEach(map -> skillsRecipes.add(map.getValue()));
+        return skillsRecipes;
     }
 
     public Integer getId() {
@@ -121,6 +133,29 @@ public class Recipe {
         this.kitchenwares = kitchenwares;
     }
 
+    public void addIngredient(Food food, float quantity) {
+        if (food != null && quantity > 0) {
+            this.ingredients.add(new Ingredient(this, food, quantity));
+        }
+    }
+
+    public void addCategory(Category category) {
+        if (category != null) {
+            this.categories.add(category);
+        }
+    }
+
+    public void addKitchenware(Kitchenware kitchenware) {
+        if (kitchenware != null) {
+            this.kitchenwares.add(kitchenware);
+        }
+    }
+
+    public boolean isFree(List<Free> frees) {
+        return this.ingredients.stream()
+                .allMatch(i -> i.getIngredient().isFree(frees));
+    }
+
     public boolean isElegible(List<Food> foods) {
         int required = 0;
 
@@ -136,7 +171,7 @@ public class Recipe {
         return (required == this.getRequiredIngredientsTotal());
     }
 
-    public int getRequiredIngredientsTotal() {
+    private int getRequiredIngredientsTotal() {
         int requiredIngredients = 0;
         for (Ingredient ingredient : this.ingredients) {
             if (ingredient.isRequired())
@@ -144,12 +179,6 @@ public class Recipe {
         }
         return requiredIngredients;
     } 
-    
-    public boolean isFree(List<Free> frees) {
-        return this.ingredients.stream()
-                               .allMatch(i -> i.getIngredient().isFree(frees));
-    }
-
 
     @Override
     public String toString() {

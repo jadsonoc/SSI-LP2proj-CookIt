@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import util.Sequences;
 
 public class Food {
@@ -53,8 +54,12 @@ public class Food {
         this.unit = unit;
     }
 
-    public void setFree(int free) {
-        this.frees.add(new Free(free));
+    public void setFree(Free free) {
+        this.frees.add(free);
+    }
+
+    public List<Free> getFree() {
+        return frees;
     }
 
     public List<Ingredient> getIngredients() {
@@ -74,27 +79,25 @@ public class Food {
     }
 
     public boolean isFree(List<Free> frees) {
-        if ( this.frees == null || frees == null ) {
+        //Aqui, o retorno foi construído com base nos frees atrelados a este Food utilizando a API Stream
+        if (frees == null || this.frees == null)
             return false;
-        } else if (frees.size() > 1) {
-            return this.frees.containsAll(frees);
+        else if (frees.size() > 1) {
+            return frees.size() == this.frees.size();
         } else {
-            return this.frees.contains(frees);
-        }
-            //Maneira que achava coerente, até corrigir a falta da associação na classe Free
-            //Aqui, o retorno foi construído com base nos frees atrelados a este Food utilizando a API Stream
-            //Primeiro, cria-se o stream, logo após, com a função AllMatch, verifica se todos os itens retornados
+            //Primeiro, cria-se o stream, logo após, com a função AllMatch, verifica se algum dos itens retornados
             //pela função f1, a seguir, estão contidos neste list
             //A f1, por sua vez, usa API stream novamente e transforma em um MAP dos valores int correspondentes ao
             //objeto Free (itilizando o operador :: para fazer referência ao métodos de getValueFree da classe Free)
-            //e, por fim, comparando os valores ao invés dos objetos e retornando true se houver match
-            // return this.frees.stream()
-            //                  .anyMatch(f1 -> { 
-            //                     return frees.stream()
-            //                                 .map(Free::getValueFree)
-            //                                 .anyMatch(f2 -> f2.equals(f1.getValueFree()));
-            //                  });
-
+            //e, por fim, comparando os valores ao invés dos objetos e retornando true se houver match entre f1 e f2,
+            //ou seja, ambos true
+            return this.frees.stream()
+                    .anyMatch(f1 -> {
+                        return frees.stream()
+                                .map(Free::getValueFree)
+                                .anyMatch(f2 -> f2.equals(f1.getValueFree()));
+                    });
+        }
     }
 
     @Override
@@ -103,6 +106,4 @@ public class Food {
                 + ingredients + "]";
     }
     
-    
-
 }

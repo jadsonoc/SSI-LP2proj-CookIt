@@ -1,6 +1,6 @@
 package models;
 
-public class Login {
+public class Login implements Cloneable {
     
     private String username;
 
@@ -11,26 +11,47 @@ public class Login {
         this.setPassword(password);
     }
 
-    public String getUsername() {
-        return username;
-    }
-
     private void setUsername(String username) {
-        if ( ! username.isEmpty() ) {
+        if (username.isEmpty() || username == null || username.equals("")) {
+            throw new RuntimeException("Erro de Login: Necessário informar o usuário.");
+        } else
             this.username = username;
-        } 
-        else throw new RuntimeException("Erro de Login: Necessário informar o usuário.");
-    }
-
-    public String getPassword() {
-        return password;
+    
     }
 
     private void setPassword(String password) {
-        if ( ! username.isEmpty() ) {
+        if (password.isEmpty() || password == null || password.equals("")) {
+            throw new RuntimeException("Erro de Login: Necessário informar a senha.");
+        } else
             this.password = password;
-        } 
-        else throw new RuntimeException("Erro de Login: Necessário informar a senha.");
+    }
+    
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
+
+    public boolean validateLogin( String username, String password) {
+        return this.isValidUsername(username) && this.isValidPassword(password);
+    }
+    
+    private String getUsername() {
+        return username;
+    }
+
+    private String getPassword() {
+        return password;
+    }
+
+    private boolean isValidUsername(String username) {
+        return this.getUsername().equals(username);
+    }
+
+    private boolean isValidPassword(String password) {
+        return this.getPassword().equals(password);
     }
 
 }

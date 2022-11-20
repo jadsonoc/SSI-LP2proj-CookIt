@@ -3,7 +3,6 @@ package views;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import models.Food;
 import models.Recipe;
 import util.InputKeyboardStream;

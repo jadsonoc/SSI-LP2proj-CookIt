@@ -1,22 +1,14 @@
 package controller;
 
-import java.util.Arrays;
-import java.util.List;
-
 import data.DB;
-import models.Free;
-import models.Recipe;
-import views.FreeRecipesView;
 import views.RecipesView;
 
 public class RecipesController {
     
     private RecipesView recipesView;
-    private FreeRecipesView freeRecipesView;
 
     public RecipesController() {
         recipesView = new RecipesView(DB.receitas);
-        freeRecipesView = new FreeRecipesView();
     }
 
     public void mainMenu() {

@@ -20,28 +20,36 @@ public class User {
 
     private Login loginUser;
 
-    private List<Recipe> favourites;
+    private List<Recipe> favouriteRecipes;
 
-    private List<Recipe> prepared;
+    private List<Recipe> preparedRecipes;
 
     public User(String name, String email, String username, String password) {
-        this.setId(Sequences.SEQ_USER++);
-        this.setName(name);
-        this.setEmail(email);
-        this.setLoginUser(new Login(username, password));
+        if (username != null && password != null) {
+            this.setId(Sequences.SEQ_USER++);
+            this.setName(name);
+            this.setEmail(email);
+            this.setLoginUser(new Login(username, password));
+        }
     }
 
     public User(String name, String email, String username, String password, int skillsLevel, boolean lactoseIntolerant,
             boolean celiac) {
-        this.setId(Sequences.SEQ_USER++);
-        this.setName(name);
-        this.setEmail(email);
-        this.setLoginUser(new Login(username, password));
-        this.setSkillsLevel(skillsLevel);
-        this.setLactoseIntolerant(lactoseIntolerant);
-        this.setCeliac(celiac);
+        if (username != null && password != null) {
+            this.setId(Sequences.SEQ_USER++);
+            this.setName(name);
+            this.setEmail(email);
+            this.setLoginUser(new Login(username, password));
+            this.setSkillsLevel(skillsLevel);
+            this.setLactoseIntolerant(lactoseIntolerant);
+            this.setCeliac(celiac);
+        }
     }
 
+    public boolean Logar(String username, String password) {
+        return this.loginUser.validateLogin(username, password);
+    }
+ 
     public Integer getId() {
         return id;
     }
@@ -90,20 +98,20 @@ public class User {
         this.celiac = celiac;
     }
 
-    public List<Recipe> getFavourites() {
-        return favourites;
+    public List<Recipe> getFavouriteRecipes() {
+        return favouriteRecipes;
     }
 
-    public void setFavourites(List<Recipe> favourites) {
-        this.favourites = favourites;
+    public void setFavouriteRecipes(List<Recipe> favouriteRecipes) {
+        this.favouriteRecipes = favouriteRecipes;
     }
 
-    public List<Recipe> getPrepared() {
-        return prepared;
+    public List<Recipe> getPreparedRecipes() {
+        return preparedRecipes;
     }
 
-    public void setPrepared(List<Recipe> prepared) {
-        this.prepared = prepared;
+    public void setPreparedRecipes(List<Recipe> preparedRecipes) {
+        this.preparedRecipes = preparedRecipes;
     }
 
     private void setLoginUser(Login login) {
