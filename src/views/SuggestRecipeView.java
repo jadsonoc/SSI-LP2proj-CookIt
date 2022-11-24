@@ -26,11 +26,13 @@ public class SuggestRecipeView {
         SuggestRecipesScreenOptions selectedOption = SuggestRecipesScreenOptions.VAZIO;
         int input = 0;
         do {
-            System.out.println("");
+            System.out.println("****************** Surpreenda-me! :: CookIt! *****************");
+            System.out.println();
             System.out.println("0 - Voltar");
             System.out.println("1 - Informar ingredientes à disposição");
             input = InputKeyboardStream.readInt("Selecione uma opção acima: ");
         } while (input < 0 || (input > SuggestRecipesScreenOptions.values().length - 1));
+        InputKeyboardStream.clearScreen();
         selectedOption = SuggestRecipesScreenOptions.values()[input];
         return selectedOption;
     }

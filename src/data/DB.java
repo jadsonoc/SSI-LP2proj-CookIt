@@ -18,7 +18,7 @@ import models.User;
 import util.InputKeyboardStream;
 
 public class DB {
-
+        public static final boolean TESTMODE = true;
         public static boolean LOGADO = false;
 
         public static User usuario;
@@ -49,7 +49,7 @@ public class DB {
 
         public static void criaUsuario() {
             try {
-                usuario = new User("Jadson Costa", "jadsonoc@gmail.com", "jadsonoc", "123456", 2, false,
+                usuario = new User("Jane Doe", "janedoe@test.com", "janedoe", "123456", 2, false,
                                     false);
             } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
@@ -58,11 +58,22 @@ public class DB {
         
         public static void realizaLogin() {
             Login loginSession = DB.usuario.getLoginUser();
-            String usuario = InputKeyboardStream.readString("Informe o seu usuário: ");
-            String senha = InputKeyboardStream.readPassword("Informe sua senha: ");
-            if (loginSession.validateLogin(usuario, senha)) {
-                    DB.LOGADO = true;
+            boolean retorno = false;
+            if (DB.TESTMODE) {
+                System.out.println();
+                System.out.println("Obs.: Login para testes -> usuário: janedoe | senha: 123456");
+                System.out.println();
             }
+            do {
+                    String usuario = InputKeyboardStream.readString("Informe o seu usuário: ");
+                    String senha = InputKeyboardStream.readPassword("Informe sua senha: ");
+                    try {
+                        retorno = loginSession.validateLogin(usuario, senha);
+                    } catch (RuntimeException e) {
+                        System.out.println(e.getMessage());
+                    }
+            } while (!retorno);
+            DB.LOGADO = retorno;
         }
 
         public static void criaUnidades() {

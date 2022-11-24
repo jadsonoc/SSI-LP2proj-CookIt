@@ -17,10 +17,9 @@ public class MainController {
             op = mainView.mainMenu();
             switch (op) {
                 case PROFILE:
-                    if (DB.LOGADO)
+                    if(DB.LOGADO)
                         this.profileController();
-                    else
-                        DB.realizaLogin();
+                    else DB.realizaLogin();
                     break;
                 case RECIPES:
                     this.recipesController();

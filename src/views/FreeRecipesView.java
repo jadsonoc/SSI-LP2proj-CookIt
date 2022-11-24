@@ -28,13 +28,15 @@ public class FreeRecipesView {
         FreeRecipesScreenOptions selectedOption = FreeRecipesScreenOptions.VAZIO;
         int input = 0;
         do {
-            System.out.println("");
+            System.out.println("****************** Receitas Especiais :: CookIt! *****************");
+            System.out.println();
             System.out.println("0 - Voltar");
             System.out.println("1 - Listar receitas Sem Lactose");
             System.out.println("2 - Listar receitas Sem Glúten");
             System.out.println("3 - Listar receitas Sem Glúten e Sem Lactose");
             input = InputKeyboardStream.readInt("Selecione uma opção acima: ");
         } while (input < 0 || input > (FreeRecipesScreenOptions.values().length - 1));
+        InputKeyboardStream.clearScreen();
         selectedOption = FreeRecipesScreenOptions.values()[input];
         return selectedOption;
     }

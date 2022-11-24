@@ -19,13 +19,15 @@ public class RecipesView {
         RecipesScreenOptions selectedOption = RecipesScreenOptions.VAZIO;
         int input = 0;
         do {
-            System.out.println("");
+            System.out.println("****************** Receitas :: CookIt! *****************");
+            System.out.println();
             System.out.println("0 - Voltar");
             System.out.println("1 - Listar todas as Receitas");
             System.out.println("2 - Listar receitas especiais para intolerâncias alimentares");
             System.out.println("3 - Mostrar receitas de acordo com as minhas habilidades");
             input = InputKeyboardStream.readInt("Selecione uma opção acima: ");
         } while (input < 0 || input > (RecipesScreenOptions.values().length - 1));
+        InputKeyboardStream.clearScreen();
         selectedOption = RecipesScreenOptions.values()[input];
         return selectedOption;
     }

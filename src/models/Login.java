@@ -35,7 +35,15 @@ public class Login implements Cloneable {
     }
 
     public boolean validateLogin(String username, String password) {
-        return this.isValidUsername(username) && this.isValidPassword(password);
+        if (this.isValidUsername(username) && this.isValidPassword(password)) {
+            return true;
+        } else {
+            if (this.isValidUsername(username)) {
+                throw new RuntimeException("Password informado é inválido!");
+            } else {
+                throw new RuntimeException("Usuário informado é inválido!");
+            }
+        }
     }
     
     private String getUsername() {

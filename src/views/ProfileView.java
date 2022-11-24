@@ -1,7 +1,5 @@
 package views;
 
-import java.text.NumberFormat.Style;
-
 import models.Recipe;
 import models.User;
 import util.InputKeyboardStream;
@@ -22,13 +20,15 @@ public class ProfileView {
         ProfileScreenOptions selectedOption = ProfileScreenOptions.VAZIO;
         int input = 0;
         do {
-            System.out.println("");
+            System.out.println("****************** Meu Perfil :: CookIt! *****************");
+            System.out.println();
             System.out.println("0 - Voltar");
             System.out.println("1 - Mostrar Perfil");
             System.out.println("2 - Mostrar Minhas Receitas Favoritas");
             System.out.println("3 - Mostrar Receitas Que Já Preparei");
             input = InputKeyboardStream.readInt("Selecione uma opção acima: ");
         } while (input < 0 || input > (ProfileScreenOptions.values().length - 1));
+        InputKeyboardStream.clearScreen();
         selectedOption = ProfileScreenOptions.values()[input];
         return selectedOption;
     }
