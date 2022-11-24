@@ -100,6 +100,8 @@ public class DB {
                 unidades.put(uni.getId(), uni);
                 uni = new Unit("dentes", "dts");
                 unidades.put(uni.getId(), uni);
+                uni = new Unit("envelope", "env"); //511
+                unidades.put(uni.getId(), uni);
         }
 
         public static void criaAlimentos() {
@@ -126,7 +128,7 @@ public class DB {
                 alimentos.put(foo.getId(), foo);
                 semL.addFood(foo);
                 semG.addFood(foo);
-                foo = new Food("Orégano", unidades.get(508), Arrays.asList(semL, semG));
+                foo = new Food("Orégano", unidades.get(508), Arrays.asList(semL, semG)); //1005
                 alimentos.put(foo.getId(), foo);
                 semL.addFood(foo);
                 semG.addFood(foo);
@@ -179,10 +181,17 @@ public class DB {
                 foo = new Food("Creme Gianduia (Nutella)", unidades.get(501), Arrays.asList(semG));
                 alimentos.put(foo.getId(), foo);
                 semG.addFood(foo);
-                foo = new Food("Alho", unidades.get(510), Arrays.asList(semL, semG));
+                foo = new Food("Alho", unidades.get(510), Arrays.asList(semL, semG)); //1020
                 alimentos.put(foo.getId(), foo);
                 semL.addFood(foo);
                 semG.addFood(foo);
+                foo = new Food("Queijo muçarela fatiado", unidades.get(501), Arrays.asList(semG)); 
+                alimentos.put(foo.getId(), foo);
+                semG.addFood(foo);
+                foo = new Food("Creme de Cebola", unidades.get(511), Arrays.asList(semG)); 
+                alimentos.put(foo.getId(), foo);
+                semG.addFood(foo);
+
         }
 
         public static void criaUtensilios() {
@@ -210,6 +219,20 @@ public class DB {
                 kit = new Kitchenware("Forma de fundo removível", null); // 807
                 utensilios.put(kit.getId(), kit);
                 kit = new Kitchenware("Batedeira", null);
+                utensilios.put(kit.getId(), kit);
+                kit = new Kitchenware("Refratário de vidro retangular", null);
+                utensilios.put(kit.getId(), kit);
+                rep.add(kit);
+                kit = new Kitchenware("Assadeira retangular", rep);
+                utensilios.put(kit.getId(), kit);
+                rep.clear();
+                kit = new Kitchenware("Faca", null);
+                utensilios.put(kit.getId(), kit);
+                rep.add(kit);
+                kit = new Kitchenware("Cortador de biscoito", rep); //812
+                utensilios.put(kit.getId(), kit);
+                rep.clear();
+                kit = new Kitchenware("Espátula ou escumadeira", null);
                 utensilios.put(kit.getId(), kit);
         }
 
@@ -253,8 +276,8 @@ public class DB {
                 tempCat = new ArrayList<Category>(
                                 Arrays.asList(categorias.get(605)));
                 tempKit = new ArrayList<Kitchenware>(
-                                Arrays.asList(utensilios.get(806), utensilios.get(807), utensilios.get(808)));
-                tempPrep = "1. Comece triturando o biscoito até virar uma farofinha;2. Misture a manteiga e forre uma forma de fundo removível de, aproximadamente, 18 cm com essa mistura;3. Leve ao forno em temperatura média por 10 min;4. Na batedeira, misture bem o cream cheese, a Nutella e os ovos até formar um creme uniforme;5. Despeje o creme por cima da camada de biscoito e leve ao forno em temperatura média por 30 minutos ou até que fique bem firme;6. Espere esfriar um pouco, desenforme e deixe na geladeira por, no mínimo, 1h.";
+                                Arrays.asList(utensilios.get(807)));
+                tempPrep = "1. Em um recipiente bata levemente o ovo com o leite e o sal e reserve;2. Com um cortador de biscoitos ou uma faca abra uma cavidade nas fatias de pão (importante que a cavidade não seja muito grande, para que ainda sobrem bordas no pão);3. Aqueça uma frigideira grande untada com manteiga e coloque as fatias de pão;4. Com cuidado despeje a mistura de ovo e leite na cavidade, segurando as fatias de pão para que não se movam;5. Deixe aquecer até que os ovos comecem a cozinhar;6. Vire cada fatia de pão com uma espátula e deixe dourar do outro lado;7. Sirva a seguir.";
                 rec = new Recipe("Cheesecake de Nutella", tempPrep.replaceAll(";", System.lineSeparator()),
                                 LocalTime.of(1, 00), 8, 3, tempCat, tempKit);
                 tempIng = new ArrayList<Ingredient>(
@@ -313,7 +336,7 @@ public class DB {
 
                 // Receita 4
                 tempCat = new ArrayList<Category>(
-                                Arrays.asList(categorias.get(600), categorias.get(601)));
+                                Arrays.asList(categorias.get(600), categorias.get(601), categorias.get(606)));
                 tempKit = new ArrayList<Kitchenware>(
                                 Arrays.asList(utensilios.get(801)));
                 tempPrep = "1. Primeiramente, hidrate a tapioca de acordo com as instruções do fabricante;2. Em um recipiente, misture bem todos os ingredientes.;3. Em uma frigideira antiaderente, coloque uma porção da massa e deixe dourar levemente dos dois lados.;4. Repita a operação até terminar a massa.;5. Sirva com o recheio de sua preferência.";
@@ -338,6 +361,73 @@ public class DB {
                 }
                 rec.setIngredients(tempIng);
                 receitas.put(rec.getId(), rec);
+
+
+                // Receita 5
+                tempCat = new ArrayList<Category>(
+                                Arrays.asList(categorias.get(602), categorias.get(603)));
+                tempKit = new ArrayList<Kitchenware>(
+                                Arrays.asList(utensilios.get(810)));
+                tempPrep = "1. Em um recipiente, misture bem a carne moída com o creme de cebola, até ficar homogêneo;2. Abra a mistura de carne moída sobre um plástico-filme;3. Disponha as fatias de queijo mozarela por cima e depois as fatias de presunto, deixando uma borda;4. Espalhe o tomate e o orégano;5. Enrole como rocambole, com a ajuda do plástico e coloque-o em uma assadeira grande untada com manteiga;6. Espalhe os pedaços de manteiga por cima e leve ao forno médio-alto (200°C), preaquecido, por cerca de 45 minutos, ou até que o rocambole esteja dourado;7. Sirva em seguida.;Sugestão de acompanhamento: Arroz branco e/ou Saladinha";
+                rec = new Recipe("Rocambole de Carne", tempPrep.replaceAll(";", System.lineSeparator()),
+                                LocalTime.of(1, 10), 5, 3, tempCat, tempKit);
+                tempIng = new ArrayList<Ingredient>(
+                                Arrays.asList(
+                                                new Ingredient(rec, alimentos.get(1002), 1000, true),
+                                                new Ingredient(rec, alimentos.get(1003), 100),
+                                                new Ingredient(rec, alimentos.get(1021), 100),
+                                                new Ingredient(rec, alimentos.get(1022), 1),
+                                                new Ingredient(rec, alimentos.get(1004), 1),
+                                                new Ingredient(rec, alimentos.get(1005), 1),
+                                                new Ingredient(rec, alimentos.get(1001), 20),
+                                                new Ingredient(rec, alimentos.get(1011), 1),
+                                                new Ingredient(rec, alimentos.get(1010), 1)
+                                                ));
+                // Associa com Food
+                for (Ingredient ingredient : tempIng) {
+                        ingredient.getIngredient().setIngredients(tempIng);
+                }
+                // Associa com Kitchenware
+                for (Kitchenware kitchenware : tempKit) {
+                        kitchenware.setRecipes(Arrays.asList(rec));
+                }
+                // Associa com Category
+                for (Category category : tempCat) {
+                        category.setRecipes(Arrays.asList(rec));
+                }
+                rec.setIngredients(tempIng);
+                receitas.put(rec.getId(), rec);
+
+                // Receita 6
+                tempCat = new ArrayList<Category>(
+                                Arrays.asList(categorias.get(600), categorias.get(601)));
+                tempKit = new ArrayList<Kitchenware>(
+                                Arrays.asList(utensilios.get(812), utensilios.get(813)));
+                tempPrep = "1. Primeiramente, hidrate a tapioca de acordo com as instruções do fabricante;2. Em um recipiente, misture bem todos os ingredientes.;3. Em uma frigideira antiaderente, coloque uma porção da massa e deixe dourar levemente dos dois lados.;4. Repita a operação até terminar a massa.;5. Sirva com o recheio de sua preferência.";
+                rec = new Recipe("Pão Integral com Omelete", tempPrep.replaceAll(";", System.lineSeparator()),
+                                LocalTime.of(0, 15), 1, 1, tempCat, tempKit);
+                tempIng = new ArrayList<Ingredient>(
+                                Arrays.asList(
+                                                new Ingredient(rec, alimentos.get(1013), 1, true),
+                                                new Ingredient(rec, alimentos.get(1015), 2, true),
+                                                new Ingredient(rec, alimentos.get(1014), 20),
+                                                new Ingredient(rec, alimentos.get(1011), 1)
+                                        ));
+                // Associa com Food
+                for (Ingredient ingredient : tempIng) {
+                        ingredient.getIngredient().setIngredients(tempIng);
+                }
+                // Associa com Kitchenware
+                for (Kitchenware kitchenware : tempKit) {
+                        kitchenware.setRecipes(Arrays.asList(rec));
+                }
+                // Associa com Category
+                for (Category category : tempCat) {
+                        category.setRecipes(Arrays.asList(rec));
+                }
+                rec.setIngredients(tempIng);
+                receitas.put(rec.getId(), rec);
+
         }
 
         public static void adicionaReceitasFavoritas() {

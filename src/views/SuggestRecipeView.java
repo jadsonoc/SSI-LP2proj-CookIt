@@ -50,6 +50,7 @@ public class SuggestRecipeView {
         return chosenIngredients;
     }
     
+    //Implementação futura...
     // public List<Recipe> chooseRecipesMenu() {
     //     List<Recipe> chosenRecipes = new ArrayList<Recipe>();
     //     System.out.println("Escolha as receitas que deseja visualizar: ");

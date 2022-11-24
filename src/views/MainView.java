@@ -25,6 +25,7 @@ public class MainView {
             } while (input < 0 || (input > OptionsMainScreen.values().length - 1));
         } else {
             do {
+                System.out.println();
                 System.out.println("Olá, seja bem-vindo ao CookIt!");
                 System.out.println();
                 System.out.println("0 - Sair");
