@@ -11,14 +11,17 @@ import models.Food;
 import models.Free;
 import models.Ingredient;
 import models.Kitchenware;
+import models.Login;
 import models.Recipe;
 import models.Unit;
 import models.User;
+import util.InputKeyboardStream;
 
 public class DB {
 
-        public static User usuario = new User("Jadson Costa", "jadsonoc@gmail.com", "jadsonoc", "123456", 5, false,
-                        false);
+        public static boolean LOGADO = false;
+
+        public static User usuario;
        
         public static Map<Integer, Unit> unidades = new HashMap<Integer, Unit>();
         public static Map<Integer, Category> categorias = new HashMap<Integer, Category>();
@@ -42,6 +45,24 @@ public class DB {
                 categorias.put(cat.getId(), cat);
                 cat = new Category("Saudável");
                 categorias.put(cat.getId(), cat);
+        }
+
+        public static void criaUsuario() {
+            try {
+                usuario = new User("Jadson Costa", "jadsonoc@gmail.com", "jadsonoc", "123456", 2, false,
+                                    false);
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        
+        public static void realizaLogin() {
+            Login loginSession = DB.usuario.getLoginUser();
+            String usuario = InputKeyboardStream.readString("Informe o seu usuário: ");
+            String senha = InputKeyboardStream.readPassword("Informe sua senha: ");
+            if (loginSession.validateLogin(usuario, senha)) {
+                    DB.LOGADO = true;
+            }
         }
 
         public static void criaUnidades() {
@@ -195,13 +216,13 @@ public class DB {
                                 Arrays.asList(utensilios.get(801)));
                 tempPrep = "1. Corte o filé mignon em tiras com espessura de aproximadamente 1 centímetro;2. Corte a cebola descascada ao meio e, depois em meias luas no sentido contrário aos gomos;3. Em um recipiente, tempere o filé mignon com sal e pimenta do reino o quanto baste (q.b.);4. Reserve em geladeira por 10 minutos;5. Em uma frigideira grande aqueça a manteiga, refogue o filé e deixe dourar, sem mexer muito para não juntar líquido;6. Acrescente a cebola e refogue até dourar;7. Sirva em seguida.;Sugestão de acompanhamento: Arroz branco e/ou Saladinha.";
                 rec = new Recipe("Iscas de Filé Mignon Aceboladas", tempPrep.replaceAll(";", System.lineSeparator()),
-                                LocalTime.of(0, 20), 4, 1, tempCat, tempKit);
+                                LocalTime.of(0, 20), 4, 2, tempCat, tempKit);
                 tempIng = new ArrayList<Ingredient>(
                                 Arrays.asList(new Ingredient(rec, alimentos.get(1000), 500, true),
-                                              new Ingredient(rec, alimentos.get(1001), 50, true),
-                                              new Ingredient(rec, alimentos.get(1008), 1),
-                                              new Ingredient(rec, alimentos.get(1010), 1),
-                                              new Ingredient(rec, alimentos.get(1011), 1)));
+                                                new Ingredient(rec, alimentos.get(1001), 50, true),
+                                                new Ingredient(rec, alimentos.get(1008), 1),
+                                                new Ingredient(rec, alimentos.get(1010), 1),
+                                                new Ingredient(rec, alimentos.get(1011), 1)));
                 // Associa com Food
                 for (Ingredient ingredient : tempIng) {
                         ingredient.getIngredient().setIngredients(tempIng);
@@ -286,7 +307,7 @@ public class DB {
                                 Arrays.asList(utensilios.get(801)));
                 tempPrep = "1. Primeiramente, hidrate a tapioca de acordo com as instruções do fabricante;2. Em um recipiente, misture bem todos os ingredientes.;3. Em uma frigideira antiaderente, coloque uma porção da massa e deixe dourar levemente dos dois lados.;4. Repita a operação até terminar a massa.;5. Sirva com o recheio de sua preferência.";
                 rec = new Recipe("Crepioca Rápida", tempPrep.replaceAll(";", System.lineSeparator()),
-                                LocalTime.of(0, 10), 4, 2, tempCat, tempKit);
+                                LocalTime.of(0, 10), 4, 1, tempCat, tempKit);
                 tempIng = new ArrayList<Ingredient>(
                                 Arrays.asList(
                                                 new Ingredient(rec, alimentos.get(1013), 4, true),
@@ -308,4 +329,14 @@ public class DB {
                 receitas.put(rec.getId(), rec);
         }
 
+        public static void adicionaReceitasFavoritas() {
+                usuario.setFavouriteRecipes(Arrays.asList(receitas.get(1), receitas.get(3)));
+        }
+
+        public static void adicionaReceitasPreparadas() {
+                usuario.setPreparedRecipes(Arrays.asList(receitas.get(2)));
+        }
+        
+
+        
 }

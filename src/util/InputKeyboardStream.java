@@ -1,14 +1,21 @@
 package util;
 
+import java.io.Console;
 import java.util.Scanner;
 
 public class InputKeyboardStream {
 
     private static Scanner keyboard = new Scanner(System.in);
+    private static Console keyboardConsole = System.console();
     
     public static String readString(String message) {
         System.out.print(message);
         return keyboard.nextLine();
+    }
+
+    public static String readPassword(String message) {
+        System.out.print(message);
+        return String.valueOf(keyboardConsole.readPassword());
     }
 
     public static int readInt(String message) {

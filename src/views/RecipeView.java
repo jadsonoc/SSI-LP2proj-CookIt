@@ -17,6 +17,7 @@ public class RecipeView {
         System.out.println("Tílulo: " + this.recipe.getTitulo());
         System.out.println("Tempo de Preparo: " + this.recipe.getTime());
         System.out.println("Rendimento: " + this.recipe.getServe() + " porções.");
+        System.out.println("Grau de dificuldade: " + this.recipe.getDifficulty());
         IngredientsView ingredientsView = new IngredientsView(this.recipe.getIngredients());
         ingredientsView.printIngredients();
         System.out.println("------- Modo de Preparo:  ");

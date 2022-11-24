@@ -25,17 +25,19 @@ public class User {
     private List<Recipe> preparedRecipes;
 
     public User(String name, String email, String username, String password) {
-        if (username != null && password != null) {
+        if (username != null && password != null && ! username.equals("") && ! password.equals("")) {
             this.setId(Sequences.SEQ_USER++);
             this.setName(name);
             this.setEmail(email);
             this.setLoginUser(new Login(username, password));
+        } else {
+            throw new RuntimeException("Necessário Informar um Usuário e Senha para Criar um Usuário!");
         }
     }
 
     public User(String name, String email, String username, String password, int skillsLevel, boolean lactoseIntolerant,
             boolean celiac) {
-        if (username != null && password != null) {
+        if (username != null && password != null && ! username.equals("") && ! password.equals("")) {
             this.setId(Sequences.SEQ_USER++);
             this.setName(name);
             this.setEmail(email);
@@ -43,10 +45,12 @@ public class User {
             this.setSkillsLevel(skillsLevel);
             this.setLactoseIntolerant(lactoseIntolerant);
             this.setCeliac(celiac);
+        } else {
+            throw new RuntimeException("Necessário Informar um Usuário e Senha para Criar um Usuário!");
         }
     }
 
-    public boolean Logar(String username, String password) {
+    public boolean login(String username, String password) {
         return this.loginUser.validateLogin(username, password);
     }
  
@@ -115,11 +119,11 @@ public class User {
     }
 
     private void setLoginUser(Login login) {
-        if (login != null) {
             this.loginUser = login;
-        } else {
-            throw new RuntimeException("Erro de Cadastro de Usuário: Necessário informar os dados de Login.");
-        }
+    }
+
+    public Login getLoginUser() {
+        return loginUser;
     }
     
 }

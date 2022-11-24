@@ -1,5 +1,6 @@
 package controller;
 
+import data.DB;
 import views.MainView;
 
 public class MainController {
@@ -16,7 +17,10 @@ public class MainController {
             op = mainView.mainMenu();
             switch (op) {
                 case PROFILE:
-                    this.profileController();
+                    if (DB.LOGADO)
+                        this.profileController();
+                    else
+                        DB.realizaLogin();
                     break;
                 case RECIPES:
                     this.recipesController();

@@ -10,6 +10,10 @@ public class CookItApp {
         DB.criaUtensilios();
         DB.criaAlimentos();
         DB.criaReceitas();
+        DB.criaUsuario();
+        //Popula dados do usuário
+        DB.adicionaReceitasFavoritas();
+        DB.adicionaReceitasPreparadas();
         
         MainController mainController = new MainController();
         mainController.mainMenu();

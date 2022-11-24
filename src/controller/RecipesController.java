@@ -2,6 +2,7 @@ package controller;
 
 import data.DB;
 import views.RecipesView;
+import views.UnderSkillsRecipesView;
 
 public class RecipesController {
     
@@ -22,6 +23,9 @@ public class RecipesController {
                 case LIST_FREES:
                     this.freeRecipesController();
                     break;
+                case LIST_UNDER_SKILLS:
+                    this.listUnderSkills();
+                    break;
                 default:
                     break;
             }
@@ -35,6 +39,11 @@ public class RecipesController {
     private void freeRecipesController() {
         FreeRecipesController freeRecipesCtrl = new FreeRecipesController();
         freeRecipesCtrl.mainMenu();
+    }
+
+    private void listUnderSkills() {
+        UnderSkillsRecipesView underSkillsRecipesView = new UnderSkillsRecipesView(DB.receitas, DB.usuario);
+        underSkillsRecipesView.printUnderSkilssRecipes();
     }
 
 }

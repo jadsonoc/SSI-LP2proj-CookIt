@@ -34,7 +34,7 @@ public class Login implements Cloneable {
         }
     }
 
-    public boolean validateLogin( String username, String password) {
+    public boolean validateLogin(String username, String password) {
         return this.isValidUsername(username) && this.isValidPassword(password);
     }
     

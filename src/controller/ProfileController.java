@@ -16,8 +16,14 @@ public class ProfileController {
         do {
             op = profileView.mainMenu();
             switch (op) {
-                case SHOW:
+                case SHOW_PROFILE:
                     this.show();
+                    break;
+                case SHOW_FAVOURITES:
+                    this.showFavouriteRecipes();
+                    break;
+                case SHOW_PREPARED:
+                    this.showPreparedRecipes();
                     break;
                 default:
                     break;
@@ -27,6 +33,14 @@ public class ProfileController {
     
     private void show() {
         profileView.printProfile();
+    }
+
+    private void showFavouriteRecipes() {
+        profileView.printFavouriteRecipes();
+    }
+    
+    private void showPreparedRecipes() {
+        profileView.printPreparedRecipes();
     }
 
 }

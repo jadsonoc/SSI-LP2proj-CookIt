@@ -6,7 +6,7 @@ import util.InputKeyboardStream;
 
 public class RecipesView {
     public static enum RecipesScreenOptions {
-        VAZIO, LIST, LIST_FREES
+        VAZIO, LIST, LIST_FREES, LIST_UNDER_SKILLS
     };
 
     private Map<Integer, Recipe> recipes;
@@ -23,6 +23,7 @@ public class RecipesView {
             System.out.println("0 - Voltar");
             System.out.println("1 - Listar todas as Receitas");
             System.out.println("2 - Listar receitas especiais para intolerâncias alimentares");
+            System.out.println("3 - Mostrar receitas de acordo com as minhas habilidades");
             input = InputKeyboardStream.readInt("Selecione uma opção acima: ");
         } while (input < 0 || input > (RecipesScreenOptions.values().length - 1));
         selectedOption = RecipesScreenOptions.values()[input];
@@ -63,5 +64,5 @@ public class RecipesView {
         rec = this.recipes.get(i);
         return rec;
     }
-
+    
 }
