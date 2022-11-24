@@ -1,7 +1,5 @@
 package models;
 
-import util.Sequences;
-
 public class Unit {
 
     private Integer id;
@@ -10,14 +8,10 @@ public class Unit {
 
     private String abbreviation;
 
-    public Unit(String name, String abbreviation) {
-        this.setId();
+    public Unit(Integer id, String name, String abbreviation) {
+        this.id = id;
         this.setName(name);
         this.setAbbreviation(abbreviation);
-    }
-
-    private void setId() {
-        this.id = Sequences.SEQ_UNIT++;
     }
 
     public Integer getId() {

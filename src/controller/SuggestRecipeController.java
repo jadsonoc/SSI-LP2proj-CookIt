@@ -55,6 +55,8 @@ public class SuggestRecipeController {
             Recipe chosenRec = elegibleRecipesView.chooseRecipeMenu();
             RecipeView recView = new RecipeView(chosenRec);
             recView.printRecipe();
+        } else {
+            elegibleRecipesView.printMessageToUser("Infelizmente, nenhuma receita contendo seus ingredientes foi encontrada em nossa base.");
         }
     }
 }

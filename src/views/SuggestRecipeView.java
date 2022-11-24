@@ -41,7 +41,7 @@ public class SuggestRecipeView {
         List<Food> chosenIngredients = new ArrayList<Food>();
         System.out.println("Escolha os ingredientes: ");
         String answer = "s";
-        while (answer.equals("s") | (answer.equals("S"))) {
+        while (answer.equals("s") || (answer.equals("S"))) {
             IngredientsView ingredientsView = new IngredientsView(this.ingredients);
             Food ing = ingredientsView.chooseIngredientMenu();
             chosenIngredients.add(ing);

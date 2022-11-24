@@ -66,5 +66,9 @@ public class RecipesView {
         rec = this.recipes.get(i);
         return rec;
     }
+
+    public void printMessageToUser(String message) {
+        System.out.println(message);
+    }
     
 }

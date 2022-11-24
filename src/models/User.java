@@ -2,8 +2,6 @@ package models;
 
 import java.util.List;
 
-import util.Sequences;
-
 public class User {
 
     private Integer id;
@@ -24,9 +22,9 @@ public class User {
 
     private List<Recipe> preparedRecipes;
 
-    public User(String name, String email, String username, String password) {
+    public User(Integer id, String name, String email, String username, String password) {
         if (username != null && password != null && ! username.equals("") && ! password.equals("")) {
-            this.setId(Sequences.SEQ_USER++);
+            this.setId(id);
             this.setName(name);
             this.setEmail(email);
             this.setLoginUser(new Login(username, password));
@@ -35,10 +33,10 @@ public class User {
         }
     }
 
-    public User(String name, String email, String username, String password, int skillsLevel, boolean lactoseIntolerant,
+    public User(Integer id, String name, String email, String username, String password, int skillsLevel, boolean lactoseIntolerant,
             boolean celiac) {
         if (username != null && password != null && ! username.equals("") && ! password.equals("")) {
-            this.setId(Sequences.SEQ_USER++);
+            this.setId(id);
             this.setName(name);
             this.setEmail(email);
             this.setLoginUser(new Login(username, password));

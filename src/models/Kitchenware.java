@@ -15,13 +15,13 @@ public class Kitchenware {
 
     private List<Recipe> recipes;
 
-    public Kitchenware(String name) {
-        this.id = Sequences.SEQ_KITCHENWARE++;
+    public Kitchenware(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public Kitchenware(String name, List<Kitchenware> repleacements) {
-        this.id = Sequences.SEQ_KITCHENWARE++;
+    public Kitchenware(Integer id, String name, List<Kitchenware> repleacements) {
+        this.id = id;
         this.name = name;
         if (repleacements != null) {
             this.repleacements = new ArrayList<Kitchenware>();

@@ -2,8 +2,6 @@ package models;
 
 import java.util.List;
 
-import util.Sequences;
-
 public class Category {
 
     private Integer id;
@@ -12,13 +10,9 @@ public class Category {
 
     private List<Recipe> recipes;
 
-    public Category(String name) {
-        this.setId();
+    public Category(Integer id, String name) {
+        this.id = id;
         this.setName(name);
-    }
-
-    private void setId() {
-        this.id = Sequences.SEQ_CATEGORY++;
     }
 
     public Integer getId() {

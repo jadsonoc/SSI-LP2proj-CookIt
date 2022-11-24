@@ -3,8 +3,6 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-import util.Sequences;
-
 public class Food {
 
     private Integer id;
@@ -17,21 +15,17 @@ public class Food {
 
     private List<Ingredient> ingredients;
 
-    public Food(String name, Unit unit) {
-        this.setId();
+    public Food(Integer id, String name, Unit unit) {
+        this.id = id;
         this.name = name;
         this.unit = unit;
     }
 
-    public Food(String name, Unit unit, List<Free> frees) {
-        this.setId();
+    public Food(Integer id, String name, Unit unit, List<Free> frees) {
+        this.id = id;
         this.name = name;
         this.unit = unit;
         this.frees = frees;
-    }
-
-    private void setId() {
-        this.id = Sequences.SEQ_FOOD++;
     }
 
     public Integer getId() {

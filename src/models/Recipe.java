@@ -4,7 +4,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import util.Sequences;
 
 public class Recipe {
 
@@ -26,8 +25,8 @@ public class Recipe {
 
     private List<Kitchenware> kitchenwares;
 
-    public Recipe(String titulo, String preparation, LocalTime time, int serve, int difficulty) {
-        this.id = Sequences.SEQ_RECIPES++;
+    public Recipe(Integer id, String titulo, String preparation, LocalTime time, int serve, int difficulty) {
+        this.id = id;
         this.titulo = titulo;
         this.preparation = preparation;
         this.time = time;
@@ -35,9 +34,9 @@ public class Recipe {
         this.difficulty = difficulty;
     }
 
-    public Recipe(String titulo, String preparation, LocalTime time, int serve, int difficulty,
+    public Recipe(Integer id, String titulo, String preparation, LocalTime time, int serve, int difficulty,
         List<Category> categories, List<Kitchenware> kitchenwares) {
-        this.id = Sequences.SEQ_RECIPES++;
+        this.id = id;
         this.titulo = titulo;
         this.preparation = preparation;
         this.time = time;
