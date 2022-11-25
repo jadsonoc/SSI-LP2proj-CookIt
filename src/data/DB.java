@@ -254,8 +254,8 @@ public class DB {
                                 LocalTime.of(0, 20), 4, 2, tempCat, tempKit);
                 tempIng = new ArrayList<Ingredient>(
                                 Arrays.asList(new Ingredient(rec, alimentos.get(1000), 500, true),
-                                                new Ingredient(rec, alimentos.get(1001), 50, true),
-                                                new Ingredient(rec, alimentos.get(1008), 1),
+                                                new Ingredient(rec, alimentos.get(1001), 50),
+                                                new Ingredient(rec, alimentos.get(1008), 1, true),
                                                 new Ingredient(rec, alimentos.get(1010), 1),
                                                 new Ingredient(rec, alimentos.get(1011), 1)));
                 // Associa com Food
