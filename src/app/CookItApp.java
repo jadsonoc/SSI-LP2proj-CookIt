@@ -4,7 +4,7 @@ import controller.MainController;
 import data.DB;
 
 public class CookItApp {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         DB.criaUnidades();
         DB.criaCategorias();
         DB.criaUtensilios();

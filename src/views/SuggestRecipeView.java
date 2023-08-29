@@ -9,9 +9,9 @@ import util.InputKeyboardStream;
 
 public class SuggestRecipeView {
 
-    public static enum SuggestRecipesScreenOptions {
+    public enum SuggestRecipesScreenOptions {
         VAZIO, SUGGEST
-    };
+    }
 
     private Map<Integer, Recipe> recipes;
 
@@ -23,7 +23,6 @@ public class SuggestRecipeView {
     }
 
     public SuggestRecipesScreenOptions mainMenu() {
-        SuggestRecipesScreenOptions selectedOption = SuggestRecipesScreenOptions.VAZIO;
         int input = 0;
         do {
             System.out.println("****************** Surpreenda-me! :: CookIt! *****************");
@@ -33,12 +32,11 @@ public class SuggestRecipeView {
             input = InputKeyboardStream.readInt("Selecione uma opção acima: ");
         } while (input < 0 || (input > SuggestRecipesScreenOptions.values().length - 1));
         InputKeyboardStream.clearScreen();
-        selectedOption = SuggestRecipesScreenOptions.values()[input];
-        return selectedOption;
+        return SuggestRecipesScreenOptions.values()[input];
     }
 
     public List<Food> chooseIngredientsMenu() {
-        List<Food> chosenIngredients = new ArrayList<Food>();
+        List<Food> chosenIngredients = new ArrayList<>();
         System.out.println("Escolha os ingredientes: ");
         String answer = "s";
         while (answer.equals("s") || (answer.equals("S"))) {

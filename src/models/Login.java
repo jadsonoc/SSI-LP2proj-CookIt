@@ -3,12 +3,24 @@ package models;
 public class Login implements Cloneable {
     
     private String username;
-
+    
     private String password;
-
+    
     Login(String username, String password) {
         this.setUsername(username);
         this.setPassword(password);
+    }
+    
+    public boolean validateLogin(String username, String password) {
+        if (this.isValidUsername(username) && this.isValidPassword(password)) {
+            return true;
+        } else {
+            if (this.isValidUsername(username)) {
+                throw new RuntimeException("Password informado é inválido!");
+            } else {
+                throw new RuntimeException("Usuário informado é inválido!");
+            }
+        }
     }
 
     private void setUsername(String username) {
@@ -26,26 +38,6 @@ public class Login implements Cloneable {
             this.password = password;
     }
     
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            return null;
-        }
-    }
-
-    public boolean validateLogin(String username, String password) {
-        if (this.isValidUsername(username) && this.isValidPassword(password)) {
-            return true;
-        } else {
-            if (this.isValidUsername(username)) {
-                throw new RuntimeException("Password informado é inválido!");
-            } else {
-                throw new RuntimeException("Usuário informado é inválido!");
-            }
-        }
-    }
-    
     private String getUsername() {
         return username;
     }
@@ -57,9 +49,17 @@ public class Login implements Cloneable {
     private boolean isValidUsername(String username) {
         return this.getUsername().equals(username);
     }
-
+    
     private boolean isValidPassword(String password) {
         return this.getPassword().equals(password);
+    }
+    
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
     }
 
 }
